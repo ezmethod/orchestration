@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flow id="cee102b1-34ac-44a4-8e1e-aa1abe5031c5">
-  <descriptionCdata><![CDATA[cee102b1-34ac-44a4-8e1e-aa1abe5031c5.fdee3354-f790-4cd4-9adf-dec1c1eef646.description=Run communication test on the given SA server or device group. This operation is supported from SA version 9.1 (sas91).\n\nInputs\:\ncoreHost - The DNS name or IP Address of your SAS core.\ncorePort - The port to Connect to your SAS core on.\ncoreProtocol - The protocol to connect to your SAS core with. Either HTTP or HTTPS.\ncoreUsername - The username for host.\ncorePassword - The password for host.\ncoreVersion - The version of SAS to use.\nattachableName - The names of either the servers, or the device groups, separated by 'separator'.\nattachableID - The ids of either the servers, or the device groups, separated by 'separator'. If provided, the 'attachableName' will be ignored.\nattachableType  -  The type of the attachable items. Can be one of the following values\: SERVER or DEVICE_GROUP.\ntimeout - Timeout in milliseconds, to wait for the job to finish. Default value is 0.\nseparator - The separator used for separating the inputs. The default value for the separator is comma (,).\n\nResponses\:\nsuccess - retrieved successfully\nfailure - failed to retrieve data\n\nReturns\:\nreturnResult - The id of the job created.
+<flow id="373362f9-76b0-4753-95f6-66c77f646a87">
+  <descriptionCdata><![CDATA[373362f9-76b0-4753-95f6-66c77f646a87.c00175c1-36bf-436e-8b5d-2a50d89be6c4.prompt=hpelab_admin
+373362f9-76b0-4753-95f6-66c77f646a87.ce5503ab-311e-45c2-820b-0409641ff4ec.description=Approves a job that is blocked in SAS (job state\: Pending Approval).\n\nInputs\:\ncoreHost - The DNS name or IP Address of your SAS core.\ncorePort - The port to Connect to your SAS core on.\ncoreProtocol - The protocol to connect to your SAS core with. Either HTTP or HTTPS.\ncoreUsername - The username for host.\ncorePassword - The password for host.\ncoreVersion - The version of SAS to use.\njobID - the id of the job\n\nResponses\:\nsuccess - The operation completed successfully.\nfailure - Something went wrong.
 ]]></descriptionCdata>
   <annotation></annotation>
-  <name>Run SA Comm test</name>
+  <name>DCA Approve SA Job</name>
   <categories/>
   <inputs/>
   <possibleResponses>
-    <opResponse id="e515e552-22a9-4635-bf39-c710f8092a58">
+    <opResponse id="55a95745-9f77-4fee-99ea-ce05ff21783e">
       <annotation></annotation>
       <name>success</name>
       <isDefault>true</isDefault>
@@ -15,7 +16,7 @@
       <type>RESOLVED</type>
       <matchRules/>
     </opResponse>
-    <opResponse id="adb23eae-bc11-4df1-929e-e836729f96a5">
+    <opResponse id="1595ee5f-85e6-45a7-bcc9-3acfab259420">
       <annotation></annotation>
       <name>failure</name>
       <isDefault>false</isDefault>
@@ -25,14 +26,14 @@
     </opResponse>
   </possibleResponses>
   <availableResultExpressions/>
-  <resultExpression id="731284ef-3ac8-4501-b0dc-ead9877044e0">
+  <resultExpression id="9a2c9c33-4a78-406f-9c20-d90c362dbfe5">
     <annotation></annotation>
     <name>FailureMessage</name>
     <fieldName>FailureMessage</fieldName>
     <sourceType>RAWRESULT</sourceType>
     <filters/>
   </resultExpression>
-  <iconSpec id="425c97d7-4273-4a9a-a16f-70a9304b415c">
+  <iconSpec id="58581b2b-82d5-44f3-a3fe-bc3488b8da23">
     <baseIcon>flow.png</baseIcon>
     <basePath>System</basePath>
     <readOnly>false</readOnly>
@@ -43,12 +44,12 @@
   <compatibleRuntimeContext>false</compatibleRuntimeContext>
   <historyCheckPointFlow>true</historyCheckPointFlow>
   <steps>
-    <step id="fdee3354-f790-4cd4-9adf-dec1c1eef646">
-      <annotation>cee102b1-34ac-44a4-8e1e-aa1abe5031c5.fdee3354-f790-4cd4-9adf-dec1c1eef646.description</annotation>
-      <name>Run Communication Test</name>
+    <step id="ce5503ab-311e-45c2-820b-0409641ff4ec">
+      <annotation>373362f9-76b0-4753-95f6-66c77f646a87.ce5503ab-311e-45c2-820b-0409641ff4ec.description</annotation>
+      <name>Approve Blocked Job</name>
       <bounds>
-        <x>0.0</x>
-        <y>0.0</y>
+        <x>126.0</x>
+        <y>108.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -65,10 +66,8 @@
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="0339caec-7d61-4a01-afea-39671d9d9fc7">
+        <staticBinding id="f9012142-2f80-418d-abe5-813d56ea256c">
           <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
@@ -77,13 +76,11 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>coreHost</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>${SA_CORE}</value>
+          <value>192.168.1.250</value>
           <record>false</record>
         </staticBinding>
-        <identityBinding id="5b7790f1-6f78-45b0-a18e-295af761f2fa">
+        <userInputBinding id="c00175c1-36bf-436e-8b5d-2a50d89be6c4">
           <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
@@ -93,35 +90,26 @@
           <inputSymbol>coreUsername</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
-          <link>
-            <refId>2034ceaf-1de3-43c2-9ce8-7b31cbe897ce</refId>
-            <refName>SA_SVC_ACCT</refName>
-          </link>
-          <identityAttribute>USERNAME</identityAttribute>
-        </identityBinding>
-        <identityBinding id="06488fe7-0741-43ee-945b-e7939f0c6701">
+          <prompt>373362f9-76b0-4753-95f6-66c77f646a87.c00175c1-36bf-436e-8b5d-2a50d89be6c4.prompt</prompt>
+          <isMultiSelect>false</isMultiSelect>
+          <sourceDelimiter>|</sourceDelimiter>
+        </userInputBinding>
+        <staticBinding id="3108f442-6a65-4620-914b-fcabed1a340b">
           <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>ENCRYPTED</inputType>
+          <recordKey></recordKey>
           <isList>false</isList>
           <required>true</required>
-          <isPersisted>true</isPersisted>
+          <isPersisted>false</isPersisted>
           <inputSymbol>corePassword</inputSymbol>
           <listDelimiter>,</listDelimiter>
+          <value>{OBFUSCATED}M+YU9HPT4PbQCdTqYkaCqA==</value>
           <record>false</record>
-          <link>
-            <refId>2034ceaf-1de3-43c2-9ce8-7b31cbe897ce</refId>
-            <refName>SA_SVC_ACCT</refName>
-          </link>
-          <identityAttribute>PASSWORD</identityAttribute>
-        </identityBinding>
-        <staticBinding id="b5413914-8f7d-46e5-a83d-0cee73faf205">
+        </staticBinding>
+        <staticBinding id="43541b55-a57e-43b2-a9a9-555e2243e882">
           <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
@@ -133,25 +121,22 @@
           <value>443</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="2b749b5c-f915-4dbf-9b24-ddf0924d8407">
+        <staticBinding id="e07afee0-2a4c-42f8-b3f2-523c5e27a1a3">
           <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
+          <recordKey></recordKey>
           <isList>false</isList>
           <required>false</required>
-          <isPersisted>true</isPersisted>
+          <isPersisted>false</isPersisted>
           <inputSymbol>coreProtocol</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <value>https</value>
           <record>false</record>
         </staticBinding>
-        <userInputBinding id="b6d4e9ce-0179-4e9d-b5e9-874358d4e925">
+        <staticBinding id="c5b77a15-2e55-4569-b7f4-8f39c24d6f15">
           <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
@@ -160,97 +145,25 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>coreVersion</inputSymbol>
           <listDelimiter>,</listDelimiter>
+          <value>10.40</value>
           <record>false</record>
-          <prompt></prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <link>
-            <refId>16a2326d-3eb1-414f-b5d6-1e82f801ea87</refId>
-            <refName>SAS Version</refName>
-          </link>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
-        <userInputBinding id="fe603d06-6172-4b98-9d2b-8a3230369972">
+        </staticBinding>
+        <staticBinding id="85a574d7-625b-466b-b8f2-965bd2f35890">
           <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
           <isPersisted>true</isPersisted>
-          <inputSymbol>attachableName</inputSymbol>
+          <inputSymbol>jobID</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <record>false</record>
-          <prompt></prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
-        <userInputBinding id="1a0000a4-0934-43d8-96d4-73042618faf2">
-          <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>true</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>attachableType</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-          <prompt></prompt>
-          <isMultiSelect>false</isMultiSelect>
-          <link>
-            <refId>4c9f6153-2e48-4931-9118-d2b7eccc7c2a</refId>
-            <refName>SAS Attachable Type Simple</refName>
-          </link>
-          <sourceDelimiter>|</sourceDelimiter>
-        </userInputBinding>
-        <staticBinding id="afed8ca5-0d07-4d06-a996-1e932eaac25c">
-          <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>attachableID</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="343bb603-bc30-450c-867e-da15d0040284">
-          <annotation></annotation>
-          <toContextKey></toContextKey>
-          <fromContextKey></fromContextKey>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>timeout</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="bf74cb69-09c9-44d2-abc5-e967ecd9c242">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>separator</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value>,</value>
+          <value>{$jobID$}</value>
           <record>false</record>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="92932e3d-c1ae-4e1c-973d-2dd099a6d15f">
+        <transition id="3864e2de-c9e6-44c8-a22b-a232481c9f70">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -259,19 +172,19 @@
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>9a77d4fd-cbeb-4ecf-850f-acfe0cf0174b</refId>
+            <refId>3ca931d2-0b79-44bb-9129-f7aabe10de90</refId>
           </destination>
           <source>
-            <refId>fdee3354-f790-4cd4-9adf-dec1c1eef646</refId>
+            <refId>ce5503ab-311e-45c2-820b-0409641ff4ec</refId>
           </source>
           <positions>
             <point>
-              <x>183.0</x>
-              <y>254.0</y>
+              <x>176.0</x>
+              <y>142.0</y>
             </point>
             <point>
-              <x>50.0</x>
-              <y>333.0</y>
+              <x>93.0</x>
+              <y>234.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -279,7 +192,7 @@
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="2a5ec918-d5fd-4dfa-b890-8d7f26690d95">
+        <transition id="602a1c2a-3ee6-4f86-8267-cdc234daebc7">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -288,19 +201,19 @@
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>7b259c10-53cf-464b-bdc4-36800dee4486</refId>
+            <refId>f2cc7354-f01e-4eaf-91da-675993d1bfe5</refId>
           </destination>
           <source>
-            <refId>fdee3354-f790-4cd4-9adf-dec1c1eef646</refId>
+            <refId>ce5503ab-311e-45c2-820b-0409641ff4ec</refId>
           </source>
           <positions>
             <point>
-              <x>183.0</x>
-              <y>254.0</y>
+              <x>176.0</x>
+              <y>142.0</y>
             </point>
             <point>
-              <x>381.0</x>
-              <y>253.0</y>
+              <x>273.0</x>
+              <y>228.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -311,17 +224,17 @@
       </transitions>
       <properties/>
       <opRef>
-        <refId>5d666003-098c-45d9-b67d-de7cdb9cf975</refId>
+        <refId>5cbc9c22-bb9f-4f17-8ed5-6794f3b58aa2</refId>
       </opRef>
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <returnStep id="7b259c10-53cf-464b-bdc4-36800dee4486">
+    <returnStep id="f2cc7354-f01e-4eaf-91da-675993d1bfe5">
       <annotation></annotation>
       <name>Resolved : success</name>
       <bounds>
-        <x>331.0</x>
-        <y>219.0</y>
+        <x>223.0</x>
+        <y>194.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -339,7 +252,7 @@
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="6937b6d0-8716-4f35-aad6-c87af0160788">
+        <transition id="75f759af-ad55-4aa1-89a1-b0658020319c">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -348,10 +261,10 @@
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>7b259c10-53cf-464b-bdc4-36800dee4486</refId>
+            <refId>f2cc7354-f01e-4eaf-91da-675993d1bfe5</refId>
           </destination>
           <source>
-            <refId>7b259c10-53cf-464b-bdc4-36800dee4486</refId>
+            <refId>f2cc7354-f01e-4eaf-91da-675993d1bfe5</refId>
           </source>
           <positions/>
         </transition>
@@ -360,12 +273,12 @@
       <returnStepType>RESOLVED</returnStepType>
       <assignments/>
     </returnStep>
-    <returnStep id="9a77d4fd-cbeb-4ecf-850f-acfe0cf0174b">
+    <returnStep id="3ca931d2-0b79-44bb-9129-f7aabe10de90">
       <annotation></annotation>
       <name>Error : failure</name>
       <bounds>
-        <x>0.0</x>
-        <y>299.0</y>
+        <x>43.0</x>
+        <y>200.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -383,7 +296,7 @@
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="d9724bdb-9cc7-4c2d-b0f1-c3927cd59b20">
+        <transition id="50a27422-97b0-40d8-b858-c890bb3657ff">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -392,10 +305,10 @@
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>9a77d4fd-cbeb-4ecf-850f-acfe0cf0174b</refId>
+            <refId>3ca931d2-0b79-44bb-9129-f7aabe10de90</refId>
           </destination>
           <source>
-            <refId>9a77d4fd-cbeb-4ecf-850f-acfe0cf0174b</refId>
+            <refId>3ca931d2-0b79-44bb-9129-f7aabe10de90</refId>
           </source>
           <positions/>
         </transition>
@@ -405,5 +318,5 @@
       <assignments/>
     </returnStep>
   </steps>
-  <startSteps>fdee3354-f790-4cd4-9adf-dec1c1eef646</startSteps>
+  <startSteps>ce5503ab-311e-45c2-820b-0409641ff4ec</startSteps>
 </flow>
