@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selectionList id="149f66c3-1009-46c0-8fdf-5111ac4bfec8">
+  <descriptionCdata><![CDATA[149f66c3-1009-46c0-8fdf-5111ac4bfec8.description=vmware storage selection
+]]></descriptionCdata>
+  <annotation>149f66c3-1009-46c0-8fdf-5111ac4bfec8.description</annotation>
+  <name>vmware_storage</name>
+  <storage>
+    <string>20</string>
+    <string>40</string>
+    <string>80</string>
+    <string>100</string>
+    <string>200</string>
+    <string>500</string>
+  </storage>
+</selectionList>

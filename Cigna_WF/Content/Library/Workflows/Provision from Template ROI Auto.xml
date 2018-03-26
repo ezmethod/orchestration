@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flow id="debe9443-a8f6-4552-a4de-9d43280f5a04">
-  <descriptionCdata><![CDATA[debe9443-a8f6-4552-a4de-9d43280f5a04.065c9b97-b6b2-4287-9672-6a7301cd1702.description=<pre>Sets the power state of virtual machine (poweredOn,poweredOff,suspended). Does nothing if the virtual machine is already in the desired power state.\n\nInputs\:\n    host - VMWare host hostname or IP.\n    user - VMWare username.\n    password - VMWare user's password.\n    port - Port to connect on.\n    protocol - Connection protocol.\nValid values\: "https", "http"    \n    closeSession - Close the internally kept VMware Infrastructure API session at completion of operation.\nValid values\: "true", "false"\n    async - Asynchronously perform the task.\nValid values\: "true", "false"\n    taskTimeOut - Time to wait before the operation is considered to have failed (seconds).\n    virtualMachine - Primary Virtual Machine identifier. Inventorypath (Datacenter/vm/Folder/MyVM), Name of VM, IP (IPv4 or IPv6 depending upon ESX version), hostname (full), UUID, or the VM id (vm-123,123).\n    vmIdentifierType - Virtual machine identifier type.\nValid values\: "inventorypath", "name", "ip", "hostname", "uuid", "vmid"    \n    vmPowerState - Virtual machine power state to set (poweredOn, poweredOff, suspended).\n\nResponses\:\n    success - The operation completed successfully.\n    failure - Something went wrong.\n    no action - The operation completed with no action performed.\n\nReturns\:\n    returnResult - Task ID or task completion return message.\n\nNotes\:\nInventory Path Formatting\: If host is an ESX server inventory path will be\: ha-datacenter/vm/<name of vm> .  If host is a vCenter the inventory path will be\: <name of datacenter>/vm/<folders>/<name of vm> . The <folders>/<name of vm> part of the path is based on the "Virtual Machines & Templates" view in the vCenter client. The inventory path is case sensitive.\n</pre>\n\n\n
-debe9443-a8f6-4552-a4de-9d43280f5a04.0c7bf34a-dfc5-4efd-a197-ba3de59db09f.prompt=Select how much Storage to be added to new Virtual Machine - This is in GB
-debe9443-a8f6-4552-a4de-9d43280f5a04.335fc567-5ecb-4b59-83ed-99e7ba3764fc.prompt=Password\:
-debe9443-a8f6-4552-a4de-9d43280f5a04.36e1304d-0e1b-4cb5-9a3f-0e24bf4dad62.description=<pre>Add a new virtual (SCSI) disk to an existing virtual machine.\n\nInputs\:\n    host - VMWare host hostname or IP.\n    user - VMWare username.\n    password - VMWare user's password.\n    port - Port to connect on.\nExamples\: 443, 80\n    protocol - Connection protocol.\nValid values\: "https", "http"\n    closeSession - Close the internally kept VMWare Infrastructure API session at completion of operation.\nValid values\: "true", "false"\n    async - Asynchronously perform the task.\nValid values\: "true", "false"\n    taskTimeOut - Time to wait before the operation is considered to have failed (seconds).\nDefault value\: 800\n    virtualMachine - Primary Virtual Machine identifier. Inventorypath (Datacenter/vm/Folder/MyVM), Name of VM, IP (IPv4 or IPv6 depending upon ESX version), hostname (full), UUID, or the VM id (vm-123,123).\n    vmIdentifierType - Virtual machine identifier type.\nValid values\: "inventorypath", "name", "ip", "hostname", "uuid", "vmid"\n    vmDatacenter - Virtual machine's datacenter.\n    dataStore - Datastore or datastore cluster.\nExamples\: host\:dsname, mydatastore\n    vmDiskSize - Size of the virtual disk to create in megabytes (MB).\n    vmDiskSizeUnit - The unit for "vmDiskSize" input.\nValid values\: MB, GB\nDefault\: MB\n    diskPath - Path on datastore to use for backing the new virtual disk. Include .vmdk suffix and do NOT include leading / . This path must not already exist on the datastore.\n    diskMode - Disk persistence mode. Values for ESX 3 and later VMs\: persistent, independent_persistent, independent_nonpersistent. Valid values for pre ESX 3 VMs\: persistent, nonpersistent, undoable, append.\n    thinProvision - Perform thin provisioning of the virtual disk.\nValid values\: "true", "false"\n    eagerZero - Specify if the thick disk type (thinProvisioning input set to false) is eager zero or lazy zeroed. Data located on eager zeroed disks is zeroed out when the virtual disk is created. It migth take longer to create disks in this format\nValid values\: "true", "false"\nDefault Value\: "false"\n    diskWritethrough - Enable direct write to the file system.\nValid values\: "true", "false"\n    diskSCSINode - The SCSI Node where the disk should be attached. If the input is left empty the operation will work in auto select mode.\nExamples\: "0\:0", "0\:5", "2\:1", "2\:-1", "1\:15"\n    controllerType - The SCSI controller type used when creating a new controller. If the input is left empty the operation will work in auto select mode.\nValid values\: "BusLogic Parallel", "LSI Logic Parallel", "LSI Logic SAS", "VMware Paravirtual"\n\nResponses\:\n    success - The operation completed successfully.\n    failure - Something went wrong.\n\nReturns\:\n    returnResult - Task result or operation result.\n    deviceNumber - The device number of the created disk. This output will be populated only if the operation is running to success and synchronously (async false).\n    allocatedSize - Size of the hard disk backing files in bytes.  If the disk is thin provisioned, this value will be lower then the provisioned size (vmDiskSize). This output will be populated only if the operation is running to success and synchronously (async false).\n    diskPath - Path to the disk on the datastore. This output will be populated only if the operation is running to success and synchronously (async false).\n    dataStore - Name of the datastore that contains this disk. This output will be populated only if the operation is running to success and synchronously (async false).\n    diskMode - The disk persistence mode.  Possible values\: persistent, independent_persistent, independent_nonpersistent. This output will be populated only if the operation is running to success and synchronously (async false).\n    thinProvision - Hard disk is thinly provisioned.  Possible values\: true, false. This output will be populated only if the operation is running to success and synchronously (async false).\n    uuid - Universally unique identifier (uuid) of the disk. This output will be populated only if the operation is running to success and synchronously (async false).\n    vmDiskSize - The size of the hard disk in bytes.  If the hard disk is thinly provisioned, this is the provisioned size. This output will be populated only if the operation is running to success and synchronously (async false).\n    diskSharesLevel - The vm hard disk shares level. This output will be populated only if the operation is running to success and synchronously (async false).\n    diskShares - The number of shares allocated to the hard disk. The "Normal", "High" and "Low" disk shares level map to a pre-determined set of numeric values for shares. The  "Custom" disk shares level does not map to a pre-determined set of numeric values for shares. This output will be populated only if the operation is running to success and synchronously (async false).\n    parentListJS - If this disk has a delta disk backing file, this result contains a JSON array of the parent virtual disk backing files. This output will be populated only if the operation is running to success and synchronously (async false).\nExample\: ["[datastore] path to\\/parent virtual disk backing file.vmdk","[datastore] path to\\/grandparent virtual disk backing file.vmdk"]\n\nNotes\:\n1. Inventory Path Formatting\: If host is an ESX server inventory path will be\: ha-datacenter/vm/<name of vm> .  If host is a vCenter the inventory path will be\: <name of datacenter>/vm/<folders>/<name of vm> . The <folders>/<name of vm> part of the path is based on the "Virtual Machines & Templates" view in the vCenter client. The inventory path is case sensitive.\n2. If a data cluster is provided in the "dataStore" input, the operation will apply a Storage DRS recommendation.\n3. The SCSI Node from "diskSCSINode" represents "SCSI controller (bus) number"\:"Disk unit number on the controller". Valid values for SCSI controller number are\: 0,1,2,3 and for disk unit number\: 0,1,2,...,15 without 7 (reserved by WMware).\n4. If the "diskSCSINode" is left empty the first empty space on an existing controller will be used or a new controller will be automatically created if a controller number is available. If the unit number is set as -1 the operation will find the first empty space on the specified controller.\n5. If the "controllerType" input is left empy the operation will use the type of the first controller found on VM or the "BusLogic Parallel" if the newly created controller is the first one attached to the VM.\n6. The "parentListJS" result can be used to determine the parent of a linked vm that share the same base disk storage. \n7. The "parentListJS" result will be populated with vSphere API 4.0 or greater.\n</pre>
-debe9443-a8f6-4552-a4de-9d43280f5a04.46f8b134-0d14-4eb5-98a4-f508c740204a.prompt=Select how much Memory to be provisioned with VM - 
-debe9443-a8f6-4552-a4de-9d43280f5a04.609218f6-0f7a-454d-890c-cf879ac21bfb.prompt=VMWare Host\:
-debe9443-a8f6-4552-a4de-9d43280f5a04.7d4764ed-e910-41fe-8466-5fe0bb9d75d7.prompt=Select number of CPU's for New Server
-debe9443-a8f6-4552-a4de-9d43280f5a04.889a7ede-2e54-4865-b38a-0fb2a1ffcd5e.prompt=Select Operating System
-debe9443-a8f6-4552-a4de-9d43280f5a04.939b557e-5039-4d1c-a507-a965566b7db0.description=<pre>Deploys a virtual machine from a template. The source is the templateName while the deploy is defined by <vmName,vmFolder,vmResourcePool,dataStore,hostSystem,clusterName>.\n\nNote\: cannot work across virtual datacenters\n\nInputs\:\n    host - VMware vCenter, ESX or ESXi host hostname or IP.\n    user - VMware username.\n    password - VMware user's password.\n    port - Port to connect on.\nExamples\: 443, 80\n    protocol - Connection protocol.\nValid values\: "https", "http"\n    closeSession - Close the internally kept VMware Infrastructure API session at completion of operation.\nValid values\: "true", "false"\n    async - Asynchronously perform the task.\nValid values\: "true", "false"\n    taskTimeOut - Time to wait before the operation is considered to have failed (seconds).\nDefault value\: 800\n    templateName - Name of the template to deploy from. \n    vmDatacenter - Virtual machine's datacenter. If host is ESX(i) use "ha-datacenter".\n    vmName - Name of new virtual machine being created.\n    vmFolder - Virtual machine's inventory folder. Folder names are delimited by a forward slash "/".  This input is case sensitive.  Only supported when host is a vCenter.  For root folder, use "/".\nExample\: /Hewlett Packard Enterprise/Operations Orchestration/VMs\n    vmResourcePool - Resource pool for new virtual machine. Resource pool names are delimited by a forward slash "/".  For the root resource pool, specify "Resources" or a single "/".\n    dataStore - Name of datastore or datastore cluster to store new virtual machine (eg. host\:dsname, mydatastore).  If not specified the same datastore of the source virtual machine will be used.\n    hostSystem - Name of destination host system (ESX or ESXi) for new virtual machine as seen in the vCenter UI.  Only supported when host is a vCenter.  If not specified the same host system of the source virtual machine will be used.\n    clusterName - Name of the VMWare HA or DRS cluster.  Can be specified instead of hostSystem if the desired destination ESX(i) host is in a DRS or HA cluster.\n    thinProvision - Specifies whether to perform thin provisioning of the virtual disk. If empty, the disk format will be set as same format as source. If true, the disk format will be set as thin provisioned format. If false, the disk format will be set as thick format.\nValid values\: "true", "false"\n    customizationTemplateName - Name of the customization specification to apply while creating this clone. The customization specification should already exist in the vCenter customization specifications manager. If  both 'customizationTemplateName' and 'customizationSpecXml' have values, the flow will fail.\n    customizationSpecXml - The Xml string of the customization spec.\n    connectionTimeout -  The time to wait for a connection to be established, in seconds. A "connectionTimeout" value of '0' represents an infinite timeout.\nDefault value\: 0\nFormat\: an integer representing seconds\nExamples\: 10, 20\n    socketTimeout -  The time to wait for data (a maximum period of inactivity between two consecutive data packets), in seconds. A "socketTimeout" value of '0' represents an infinite timeout.\nDefault value\: 0\nFormat\: an integer representing seconds\nExamples\: 10, 20\n\nResponses\:\n    success - The flow completed successfully.\n    failure - Something went wrong.\n\nNotes\:\n1) The result of the VMware/VMware Virtual Infrastructure and vSphere/Guest/Export Guest Customization Spec operation can be used to get the customizationSpecXml input value.\n2) Note that "socketTimeout" and "connectionTimeout" inputs do not represent the time to wait for the operation to complete. They are used when communicating with the service, to make sure that the service is up and responds to client's requests. They can be used for service diagnosis purpose.\n3) The "taskTimeOut" input is only used when the task is performed in a synchronous manner ("async" is set to "false").\n</pre>
-debe9443-a8f6-4552-a4de-9d43280f5a04.93fd3554-45e6-4e8a-9669-1dc70a49d9c2.description=This flow sets the memory size and cpu count for a virtual machine.\n\nInputs\:\n    vCenterHost - VMware host hostname or IP.\n    vCenterUsername - VMware username.\n    vCenterPassword - VMware user's password.\n    vCenterPort - Port to connect on.\nExamples\: 443, 80\n    vCenterProtocol - Connection protocol.\nValid values\: "https", "http"\n    closeSession - Close the internally kept VMWare Infrastructure API session at completion of operation\nValid inputs\: true, false \n    virtualMachine - Primary Virtual Machine identifier. Inventorypath (Datacenter/vm/Folder/MyVM), Name of VM, IP (IPv4 or IPv6 depending upon ESX version), hostname (full), UUID, or the VM id (vm-123,123).\n    vmIdentifierType - Virtual machine identifier type (inventorypath, name, ip, hostname, uuid, vmid).\n    vmDatacenter - Virtual machine's datacenter.\n    memorySize - New memory size for the virtual machine in megabytes.  This number must be a multiple of 4.\n    cpuCount - New number of CPUs for the virtual machine.\n    waitGuest - If "true" the flow will wait for the virtual machine's guest operating system.\nDefault\: true\n    poolingRetries - The number of checks the flow will do to the guest operating system to check if it's in the expected state.\nDefault\: 10\n    poolingInterval - The seconds the flow will wait between two checks of the guest operating state.\nDefault\: 10\n\nResponses\:\n    success - The flow completed successfully.\n    failure - Something went wrong.\n\nReturns\:\n    returnResult - The flow primary result containing a success message in case of success or the reason of failure in case of failure.\n\nNotes\:\n    1. Inventory Path Formatting\: If host is an ESX server inventory path will be\: ha-datacenter/vm/<name of vm> .  If host is a vCenter the inventory path will be\: <name of datacenter>/vm/<folders>/<name of vm> . The <folders>/<name of vm> part of the path is based on the "Virtual Machines & Templates" view in the vCenter client. The inventory path is case sensitive.\n    2. Memory limits\: The maximum value for 'memorySize' is based on the virtual hardware version of the virtual machine. Limits are as follows\:\n       Virtual hardware 11 (vSphere 6.0)\: 4177920 \n       Virtual hardware 10 (vSphere 5.5)\: 1035264 \n       Virtual hardware 9 (vSphere 5.1)\: 1035264 \n       Virtual hardware 8 (vSphere 5.0)\:  1035264 \n       Virtual hardware 7 (vSphere 4)\: 261120 \n       Virtual hardware 4 (ESX 3.x)\: 65536 \n       Virtual hardware 3 (ESX 2.5)\: 3600 \n       For more details regarding configuration maximums and virtual machine compatibility settings see http\://pubs.vmware.com/vsphere-60/index.jsp\#com.vmware.vsphere.vm_admin.doc/GUID-789C3913-1053-4850-A0F0-E29C3D32B6DA.html\n    3. CPU limits\: The maximum value for 'cpuCount' is based on the virtual hardware version of the virtual machine. Limits are as follows\:\n        Virtual hardware 11 (vSphere 6.0)\: 128\n        Virtual hardware 10 (vSphere 5.5)\: 64\n        Virtual hardware 9 (vSphere 5.1)\: 64\n        Virtual hardware 8 (vSphere 5.0)\: 32\n        Virtual hardware 7 (vSphere 4)\: 8\n        Virtual hardware 4 (ESX 3.x)\: 4\n        Virtual hardware 3 (ESX 2.5)\: 2\n        For more details regarding configuration maximums and virtual machine compatibility settings see http\://pubs.vmware.com/vsphere-60/index.jsp\#com.vmware.vsphere.vm_admin.doc/GUID-789C3913-1053-4850-A0F0-E29C3D32B6DA.html\n    4. The number of CPUs specified in the 'cpuCount' must not exceed the number of CPUs available on the ESX/ESXi host on which the Virtual Machine will run. When the specified value is greater than the number of CPUs available and below the configuration maximums the number of CPUs will be set to that value for the specified virtual machine however the virtual machine will not be usable. \n    5. The flow preserves the initial power state of the virtual machine after the customization was applyed. 
-debe9443-a8f6-4552-a4de-9d43280f5a04.a37a62ae-3f93-4b97-b50a-1a676fde1684.description=<pre>\nAdds a list of flow variables to the local context. The variables are available in the current flow and its child flows.\n\nInputs\:\n    keyNames - The names of the flow variables to add, separated by "delimiter".\n    myValues - The values to assign to the flow variables, separated by "delimiter".\n    delimiter - The delimiter that separates the key names and the values from the "keyNames" and "myValues" input strings.\n\nResults\:\n    returnResult - This is the primary output. It contains the value of "myValue" input field.\n\nResponses\:\n    success - The operation completed as stated in the description.\n\nNotes\:\n1. If the number of variable names is greater than the number of variable values, the value of each variable will be the value of "myValues" input field.\n2. If the number of variable names is less than the number of variable values, the additional variable values will be discarded.\n</pre>
-debe9443-a8f6-4552-a4de-9d43280f5a04.da10708c-cd14-4c34-b1a4-c6fc0feff74d.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
-debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.description=<pre>Generates UUID.\n\nInputs\:\nNone\n\nResponses\:\nsuccess - The operation completed Successfully.\n\nReturns\:\nUUID [Universally Unique IDentifier] </pre>
+<flow id="13a708cb-2e73-4672-8e24-303e184e1134">
+  <descriptionCdata><![CDATA[13a708cb-2e73-4672-8e24-303e184e1134.1e3acd53-a74e-46d0-a2d1-ac59854997b0.description=<pre>\nAdds a list of flow variables to the local context. The variables are available in the current flow and its child flows.\n\nInputs\:\n    keyNames - The names of the flow variables to add, separated by "delimiter".\n    myValues - The values to assign to the flow variables, separated by "delimiter".\n    delimiter - The delimiter that separates the key names and the values from the "keyNames" and "myValues" input strings.\n\nResults\:\n    returnResult - This is the primary output. It contains the value of "myValue" input field.\n\nResponses\:\n    success - The operation completed as stated in the description.\n\nNotes\:\n1. If the number of variable names is greater than the number of variable values, the value of each variable will be the value of "myValues" input field.\n2. If the number of variable names is less than the number of variable values, the additional variable values will be discarded.\n</pre>
+13a708cb-2e73-4672-8e24-303e184e1134.7a4eff49-857a-4687-b3e1-84306dfb8039.description=This flow sets the memory size and cpu count for a virtual machine.\n\nInputs\:\n    vCenterHost - VMware host hostname or IP.\n    vCenterUsername - VMware username.\n    vCenterPassword - VMware user's password.\n    vCenterPort - Port to connect on.\nExamples\: 443, 80\n    vCenterProtocol - Connection protocol.\nValid values\: "https", "http"\n    closeSession - Close the internally kept VMWare Infrastructure API session at completion of operation\nValid inputs\: true, false \n    virtualMachine - Primary Virtual Machine identifier. Inventorypath (Datacenter/vm/Folder/MyVM), Name of VM, IP (IPv4 or IPv6 depending upon ESX version), hostname (full), UUID, or the VM id (vm-123,123).\n    vmIdentifierType - Virtual machine identifier type (inventorypath, name, ip, hostname, uuid, vmid).\n    vmDatacenter - Virtual machine's datacenter.\n    memorySize - New memory size for the virtual machine in megabytes.  This number must be a multiple of 4.\n    cpuCount - New number of CPUs for the virtual machine.\n    waitGuest - If "true" the flow will wait for the virtual machine's guest operating system.\nDefault\: true\n    poolingRetries - The number of checks the flow will do to the guest operating system to check if it's in the expected state.\nDefault\: 10\n    poolingInterval - The seconds the flow will wait between two checks of the guest operating state.\nDefault\: 10\n\nResponses\:\n    success - The flow completed successfully.\n    failure - Something went wrong.\n\nReturns\:\n    returnResult - The flow primary result containing a success message in case of success or the reason of failure in case of failure.\n\nNotes\:\n    1. Inventory Path Formatting\: If host is an ESX server inventory path will be\: ha-datacenter/vm/<name of vm> .  If host is a vCenter the inventory path will be\: <name of datacenter>/vm/<folders>/<name of vm> . The <folders>/<name of vm> part of the path is based on the "Virtual Machines & Templates" view in the vCenter client. The inventory path is case sensitive.\n    2. Memory limits\: The maximum value for 'memorySize' is based on the virtual hardware version of the virtual machine. Limits are as follows\:\n       Virtual hardware 11 (vSphere 6.0)\: 4177920 \n       Virtual hardware 10 (vSphere 5.5)\: 1035264 \n       Virtual hardware 9 (vSphere 5.1)\: 1035264 \n       Virtual hardware 8 (vSphere 5.0)\:  1035264 \n       Virtual hardware 7 (vSphere 4)\: 261120 \n       Virtual hardware 4 (ESX 3.x)\: 65536 \n       Virtual hardware 3 (ESX 2.5)\: 3600 \n       For more details regarding configuration maximums and virtual machine compatibility settings see http\://pubs.vmware.com/vsphere-60/index.jsp\#com.vmware.vsphere.vm_admin.doc/GUID-789C3913-1053-4850-A0F0-E29C3D32B6DA.html\n    3. CPU limits\: The maximum value for 'cpuCount' is based on the virtual hardware version of the virtual machine. Limits are as follows\:\n        Virtual hardware 11 (vSphere 6.0)\: 128\n        Virtual hardware 10 (vSphere 5.5)\: 64\n        Virtual hardware 9 (vSphere 5.1)\: 64\n        Virtual hardware 8 (vSphere 5.0)\: 32\n        Virtual hardware 7 (vSphere 4)\: 8\n        Virtual hardware 4 (ESX 3.x)\: 4\n        Virtual hardware 3 (ESX 2.5)\: 2\n        For more details regarding configuration maximums and virtual machine compatibility settings see http\://pubs.vmware.com/vsphere-60/index.jsp\#com.vmware.vsphere.vm_admin.doc/GUID-789C3913-1053-4850-A0F0-E29C3D32B6DA.html\n    4. The number of CPUs specified in the 'cpuCount' must not exceed the number of CPUs available on the ESX/ESXi host on which the Virtual Machine will run. When the specified value is greater than the number of CPUs available and below the configuration maximums the number of CPUs will be set to that value for the specified virtual machine however the virtual machine will not be usable. \n    5. The flow preserves the initial power state of the virtual machine after the customization was applyed. 
+13a708cb-2e73-4672-8e24-303e184e1134.99ffdbb0-bef2-402e-9ab6-4b11b14f87ad.prompt=Password\:
+13a708cb-2e73-4672-8e24-303e184e1134.a31e467f-f8c4-4b32-865c-7fe3a6c24fe4.description=<pre>Sets the power state of virtual machine (poweredOn,poweredOff,suspended). Does nothing if the virtual machine is already in the desired power state.\n\nInputs\:\n    host - VMWare host hostname or IP.\n    user - VMWare username.\n    password - VMWare user's password.\n    port - Port to connect on.\n    protocol - Connection protocol.\nValid values\: "https", "http"    \n    closeSession - Close the internally kept VMware Infrastructure API session at completion of operation.\nValid values\: "true", "false"\n    async - Asynchronously perform the task.\nValid values\: "true", "false"\n    taskTimeOut - Time to wait before the operation is considered to have failed (seconds).\n    virtualMachine - Primary Virtual Machine identifier. Inventorypath (Datacenter/vm/Folder/MyVM), Name of VM, IP (IPv4 or IPv6 depending upon ESX version), hostname (full), UUID, or the VM id (vm-123,123).\n    vmIdentifierType - Virtual machine identifier type.\nValid values\: "inventorypath", "name", "ip", "hostname", "uuid", "vmid"    \n    vmPowerState - Virtual machine power state to set (poweredOn, poweredOff, suspended).\n\nResponses\:\n    success - The operation completed successfully.\n    failure - Something went wrong.\n    no action - The operation completed with no action performed.\n\nReturns\:\n    returnResult - Task ID or task completion return message.\n\nNotes\:\nInventory Path Formatting\: If host is an ESX server inventory path will be\: ha-datacenter/vm/<name of vm> .  If host is a vCenter the inventory path will be\: <name of datacenter>/vm/<folders>/<name of vm> . The <folders>/<name of vm> part of the path is based on the "Virtual Machines & Templates" view in the vCenter client. The inventory path is case sensitive.\n</pre>\n\n\n
+13a708cb-2e73-4672-8e24-303e184e1134.b3fa5abe-7059-479c-8707-5c3f7691e45a.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
+13a708cb-2e73-4672-8e24-303e184e1134.dac7ee08-6189-4f3d-9d04-23b21c5d0268.description=<pre>Generates UUID.\n\nInputs\:\nNone\n\nResponses\:\nsuccess - The operation completed Successfully.\n\nReturns\:\nUUID [Universally Unique IDentifier] </pre>
+13a708cb-2e73-4672-8e24-303e184e1134.eda9aaf7-8cf4-4520-95b2-3ffb59aa8e7d.description=<pre>Deploys a virtual machine from a template. The source is the templateName while the deploy is defined by <vmName,vmFolder,vmResourcePool,dataStore,hostSystem,clusterName>.\n\nNote\: cannot work across virtual datacenters\n\nInputs\:\n    host - VMware vCenter, ESX or ESXi host hostname or IP.\n    user - VMware username.\n    password - VMware user's password.\n    port - Port to connect on.\nExamples\: 443, 80\n    protocol - Connection protocol.\nValid values\: "https", "http"\n    closeSession - Close the internally kept VMware Infrastructure API session at completion of operation.\nValid values\: "true", "false"\n    async - Asynchronously perform the task.\nValid values\: "true", "false"\n    taskTimeOut - Time to wait before the operation is considered to have failed (seconds).\nDefault value\: 800\n    templateName - Name of the template to deploy from. \n    vmDatacenter - Virtual machine's datacenter. If host is ESX(i) use "ha-datacenter".\n    vmName - Name of new virtual machine being created.\n    vmFolder - Virtual machine's inventory folder. Folder names are delimited by a forward slash "/".  This input is case sensitive.  Only supported when host is a vCenter.  For root folder, use "/".\nExample\: /Hewlett Packard Enterprise/Operations Orchestration/VMs\n    vmResourcePool - Resource pool for new virtual machine. Resource pool names are delimited by a forward slash "/".  For the root resource pool, specify "Resources" or a single "/".\n    dataStore - Name of datastore or datastore cluster to store new virtual machine (eg. host\:dsname, mydatastore).  If not specified the same datastore of the source virtual machine will be used.\n    hostSystem - Name of destination host system (ESX or ESXi) for new virtual machine as seen in the vCenter UI.  Only supported when host is a vCenter.  If not specified the same host system of the source virtual machine will be used.\n    clusterName - Name of the VMWare HA or DRS cluster.  Can be specified instead of hostSystem if the desired destination ESX(i) host is in a DRS or HA cluster.\n    thinProvision - Specifies whether to perform thin provisioning of the virtual disk. If empty, the disk format will be set as same format as source. If true, the disk format will be set as thin provisioned format. If false, the disk format will be set as thick format.\nValid values\: "true", "false"\n    customizationTemplateName - Name of the customization specification to apply while creating this clone. The customization specification should already exist in the vCenter customization specifications manager. If  both 'customizationTemplateName' and 'customizationSpecXml' have values, the flow will fail.\n    customizationSpecXml - The Xml string of the customization spec.\n    connectionTimeout -  The time to wait for a connection to be established, in seconds. A "connectionTimeout" value of '0' represents an infinite timeout.\nDefault value\: 0\nFormat\: an integer representing seconds\nExamples\: 10, 20\n    socketTimeout -  The time to wait for data (a maximum period of inactivity between two consecutive data packets), in seconds. A "socketTimeout" value of '0' represents an infinite timeout.\nDefault value\: 0\nFormat\: an integer representing seconds\nExamples\: 10, 20\n\nResponses\:\n    success - The flow completed successfully.\n    failure - Something went wrong.\n\nNotes\:\n1) The result of the VMware/VMware Virtual Infrastructure and vSphere/Guest/Export Guest Customization Spec operation can be used to get the customizationSpecXml input value.\n2) Note that "socketTimeout" and "connectionTimeout" inputs do not represent the time to wait for the operation to complete. They are used when communicating with the service, to make sure that the service is up and responds to client's requests. They can be used for service diagnosis purpose.\n3) The "taskTimeOut" input is only used when the task is performed in a synchronous manner ("async" is set to "false").\n</pre>
+13a708cb-2e73-4672-8e24-303e184e1134.eef563f6-8bc1-45d3-bcb3-d71cd6811045.description=<pre>Add a new virtual (SCSI) disk to an existing virtual machine.\n\nInputs\:\n    host - VMWare host hostname or IP.\n    user - VMWare username.\n    password - VMWare user's password.\n    port - Port to connect on.\nExamples\: 443, 80\n    protocol - Connection protocol.\nValid values\: "https", "http"\n    closeSession - Close the internally kept VMWare Infrastructure API session at completion of operation.\nValid values\: "true", "false"\n    async - Asynchronously perform the task.\nValid values\: "true", "false"\n    taskTimeOut - Time to wait before the operation is considered to have failed (seconds).\nDefault value\: 800\n    virtualMachine - Primary Virtual Machine identifier. Inventorypath (Datacenter/vm/Folder/MyVM), Name of VM, IP (IPv4 or IPv6 depending upon ESX version), hostname (full), UUID, or the VM id (vm-123,123).\n    vmIdentifierType - Virtual machine identifier type.\nValid values\: "inventorypath", "name", "ip", "hostname", "uuid", "vmid"\n    vmDatacenter - Virtual machine's datacenter.\n    dataStore - Datastore or datastore cluster.\nExamples\: host\:dsname, mydatastore\n    vmDiskSize - Size of the virtual disk to create in megabytes (MB).\n    vmDiskSizeUnit - The unit for "vmDiskSize" input.\nValid values\: MB, GB\nDefault\: MB\n    diskPath - Path on datastore to use for backing the new virtual disk. Include .vmdk suffix and do NOT include leading / . This path must not already exist on the datastore.\n    diskMode - Disk persistence mode. Values for ESX 3 and later VMs\: persistent, independent_persistent, independent_nonpersistent. Valid values for pre ESX 3 VMs\: persistent, nonpersistent, undoable, append.\n    thinProvision - Perform thin provisioning of the virtual disk.\nValid values\: "true", "false"\n    eagerZero - Specify if the thick disk type (thinProvisioning input set to false) is eager zero or lazy zeroed. Data located on eager zeroed disks is zeroed out when the virtual disk is created. It migth take longer to create disks in this format\nValid values\: "true", "false"\nDefault Value\: "false"\n    diskWritethrough - Enable direct write to the file system.\nValid values\: "true", "false"\n    diskSCSINode - The SCSI Node where the disk should be attached. If the input is left empty the operation will work in auto select mode.\nExamples\: "0\:0", "0\:5", "2\:1", "2\:-1", "1\:15"\n    controllerType - The SCSI controller type used when creating a new controller. If the input is left empty the operation will work in auto select mode.\nValid values\: "BusLogic Parallel", "LSI Logic Parallel", "LSI Logic SAS", "VMware Paravirtual"\n\nResponses\:\n    success - The operation completed successfully.\n    failure - Something went wrong.\n\nReturns\:\n    returnResult - Task result or operation result.\n    deviceNumber - The device number of the created disk. This output will be populated only if the operation is running to success and synchronously (async false).\n    allocatedSize - Size of the hard disk backing files in bytes.  If the disk is thin provisioned, this value will be lower then the provisioned size (vmDiskSize). This output will be populated only if the operation is running to success and synchronously (async false).\n    diskPath - Path to the disk on the datastore. This output will be populated only if the operation is running to success and synchronously (async false).\n    dataStore - Name of the datastore that contains this disk. This output will be populated only if the operation is running to success and synchronously (async false).\n    diskMode - The disk persistence mode.  Possible values\: persistent, independent_persistent, independent_nonpersistent. This output will be populated only if the operation is running to success and synchronously (async false).\n    thinProvision - Hard disk is thinly provisioned.  Possible values\: true, false. This output will be populated only if the operation is running to success and synchronously (async false).\n    uuid - Universally unique identifier (uuid) of the disk. This output will be populated only if the operation is running to success and synchronously (async false).\n    vmDiskSize - The size of the hard disk in bytes.  If the hard disk is thinly provisioned, this is the provisioned size. This output will be populated only if the operation is running to success and synchronously (async false).\n    diskSharesLevel - The vm hard disk shares level. This output will be populated only if the operation is running to success and synchronously (async false).\n    diskShares - The number of shares allocated to the hard disk. The "Normal", "High" and "Low" disk shares level map to a pre-determined set of numeric values for shares. The  "Custom" disk shares level does not map to a pre-determined set of numeric values for shares. This output will be populated only if the operation is running to success and synchronously (async false).\n    parentListJS - If this disk has a delta disk backing file, this result contains a JSON array of the parent virtual disk backing files. This output will be populated only if the operation is running to success and synchronously (async false).\nExample\: ["[datastore] path to\\/parent virtual disk backing file.vmdk","[datastore] path to\\/grandparent virtual disk backing file.vmdk"]\n\nNotes\:\n1. Inventory Path Formatting\: If host is an ESX server inventory path will be\: ha-datacenter/vm/<name of vm> .  If host is a vCenter the inventory path will be\: <name of datacenter>/vm/<folders>/<name of vm> . The <folders>/<name of vm> part of the path is based on the "Virtual Machines & Templates" view in the vCenter client. The inventory path is case sensitive.\n2. If a data cluster is provided in the "dataStore" input, the operation will apply a Storage DRS recommendation.\n3. The SCSI Node from "diskSCSINode" represents "SCSI controller (bus) number"\:"Disk unit number on the controller". Valid values for SCSI controller number are\: 0,1,2,3 and for disk unit number\: 0,1,2,...,15 without 7 (reserved by WMware).\n4. If the "diskSCSINode" is left empty the first empty space on an existing controller will be used or a new controller will be automatically created if a controller number is available. If the unit number is set as -1 the operation will find the first empty space on the specified controller.\n5. If the "controllerType" input is left empy the operation will use the type of the first controller found on VM or the "BusLogic Parallel" if the newly created controller is the first one attached to the VM.\n6. The "parentListJS" result can be used to determine the parent of a linked vm that share the same base disk storage. \n7. The "parentListJS" result will be populated with vSphere API 4.0 or greater.\n</pre>
+13a708cb-2e73-4672-8e24-303e184e1134.f23d0d31-b01f-4eda-849e-6c9503545777.prompt=VMWare Host\:
 ]]></descriptionCdata>
   <annotation></annotation>
-  <name>Provision from Template</name>
+  <name>Provision from Template ROI Auto</name>
   <categories/>
   <inputs>
-    <userInputBinding id="889a7ede-2e54-4865-b38a-0fb2a1ffcd5e">
+    <staticBinding id="00744309-8770-4d23-8cf7-095240a789d8">
       <annotation></annotation>
       <assignFromContext>true</assignFromContext>
       <assignToContext>true</assignToContext>
@@ -28,16 +24,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <isPersisted>true</isPersisted>
       <inputSymbol>OperatingSystem</inputSymbol>
       <listDelimiter>,</listDelimiter>
+      <value>LINUX</value>
       <record>false</record>
-      <prompt>debe9443-a8f6-4552-a4de-9d43280f5a04.889a7ede-2e54-4865-b38a-0fb2a1ffcd5e.prompt</prompt>
-      <isMultiSelect>false</isMultiSelect>
-      <link>
-        <refId>b1e52503-1b75-4659-9b79-419b059403e8</refId>
-        <refName>vmware_os</refName>
-      </link>
-      <sourceDelimiter>|</sourceDelimiter>
-    </userInputBinding>
-    <userInputBinding id="7d4764ed-e910-41fe-8466-5fe0bb9d75d7">
+    </staticBinding>
+    <staticBinding id="befad597-219f-4e3a-b316-63159f7eb081">
       <annotation></annotation>
       <assignFromContext>true</assignFromContext>
       <assignToContext>true</assignToContext>
@@ -47,16 +37,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <isPersisted>true</isPersisted>
       <inputSymbol>CPU</inputSymbol>
       <listDelimiter>,</listDelimiter>
+      <value>2</value>
       <record>false</record>
-      <prompt>debe9443-a8f6-4552-a4de-9d43280f5a04.7d4764ed-e910-41fe-8466-5fe0bb9d75d7.prompt</prompt>
-      <isMultiSelect>false</isMultiSelect>
-      <link>
-        <refId>c5cb9178-19dc-4f57-8644-35b52135e0b3</refId>
-        <refName>vmware_cpu</refName>
-      </link>
-      <sourceDelimiter>|</sourceDelimiter>
-    </userInputBinding>
-    <userInputBinding id="46f8b134-0d14-4eb5-98a4-f508c740204a">
+    </staticBinding>
+    <staticBinding id="814f6fc8-cd7c-4ab8-8f27-91f295a9cbfd">
       <annotation></annotation>
       <assignFromContext>true</assignFromContext>
       <assignToContext>true</assignToContext>
@@ -66,16 +50,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <isPersisted>true</isPersisted>
       <inputSymbol>Memory</inputSymbol>
       <listDelimiter>,</listDelimiter>
+      <value>8192</value>
       <record>false</record>
-      <prompt>debe9443-a8f6-4552-a4de-9d43280f5a04.46f8b134-0d14-4eb5-98a4-f508c740204a.prompt</prompt>
-      <isMultiSelect>false</isMultiSelect>
-      <link>
-        <refId>ee7cf61d-c3b3-440d-98f3-a0d3002dac34</refId>
-        <refName>vmware_memory</refName>
-      </link>
-      <sourceDelimiter>|</sourceDelimiter>
-    </userInputBinding>
-    <userInputBinding id="0c7bf34a-dfc5-4efd-a197-ba3de59db09f">
+    </staticBinding>
+    <staticBinding id="eb81ff3a-625d-4d25-afab-ce114e20c368">
       <annotation></annotation>
       <assignFromContext>true</assignFromContext>
       <assignToContext>true</assignToContext>
@@ -85,18 +63,12 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <isPersisted>true</isPersisted>
       <inputSymbol>Storage</inputSymbol>
       <listDelimiter>,</listDelimiter>
+      <value>20</value>
       <record>false</record>
-      <prompt>debe9443-a8f6-4552-a4de-9d43280f5a04.0c7bf34a-dfc5-4efd-a197-ba3de59db09f.prompt</prompt>
-      <isMultiSelect>false</isMultiSelect>
-      <link>
-        <refId>149f66c3-1009-46c0-8fdf-5111ac4bfec8</refId>
-        <refName>vmware_storage</refName>
-      </link>
-      <sourceDelimiter>|</sourceDelimiter>
-    </userInputBinding>
+    </staticBinding>
   </inputs>
   <possibleResponses>
-    <opResponse id="6963778c-c22d-4aba-bebe-3255d8630131">
+    <opResponse id="ae33643b-d37f-4404-8de1-2692ddbdce5d">
       <annotation></annotation>
       <name>failure</name>
       <isDefault>false</isDefault>
@@ -104,7 +76,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <type>ERROR</type>
       <matchRules/>
     </opResponse>
-    <opResponse id="f8dcba8f-63f9-4054-8d26-6778d5d4de2d">
+    <opResponse id="f221aa1f-bd92-4158-9ac5-585812982880">
       <annotation></annotation>
       <name>success</name>
       <isDefault>true</isDefault>
@@ -114,14 +86,14 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
     </opResponse>
   </possibleResponses>
   <availableResultExpressions/>
-  <resultExpression id="d928e3a3-c048-4e68-a589-751bbbabd882">
+  <resultExpression id="6e1ab8c3-ef9e-464a-a80e-ae2a660b5cbf">
     <annotation></annotation>
     <name>FailureMessage</name>
     <fieldName>FailureMessage</fieldName>
     <sourceType>RAWRESULT</sourceType>
     <filters/>
   </resultExpression>
-  <iconSpec id="a94545b8-a7dc-4960-967e-9b03517ea84d">
+  <iconSpec id="f75c5fd0-1c41-4335-b6f9-4a96e7b3427e">
     <baseIcon>flow.png</baseIcon>
     <basePath>System</basePath>
     <readOnly>false</readOnly>
@@ -132,8 +104,8 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
   <compatibleRuntimeContext>false</compatibleRuntimeContext>
   <historyCheckPointFlow>true</historyCheckPointFlow>
   <steps>
-    <step id="a37a62ae-3f93-4b97-b50a-1a676fde1684">
-      <annotation>debe9443-a8f6-4552-a4de-9d43280f5a04.a37a62ae-3f93-4b97-b50a-1a676fde1684.description</annotation>
+    <step id="1e3acd53-a74e-46d0-a2d1-ac59854997b0">
+      <annotation>13a708cb-2e73-4672-8e24-303e184e1134.1e3acd53-a74e-46d0-a2d1-ac59854997b0.description</annotation>
       <name>Set Flow Variables</name>
       <bounds>
         <x>267.0</x>
@@ -141,6 +113,19 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="93479231-7c79-4d35-bc9f-8437e546f212">
+        <baseIcon>jar.png</baseIcon>
+        <basePath>Others/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="ce9c4bef-56eb-4385-b7c6-6ddd1b8a528a">
+            <baseIcon>edit.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -154,7 +139,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="6d384157-136e-43dd-935e-8676ee5048a5">
+        <staticBinding id="a819fe7e-5cb2-4628-a7f4-4dfaccc39cc0">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -167,7 +152,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>overrideJRAS,overrideNRAS</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="23d9002e-0615-4762-b9c4-55deb218edb0">
+        <staticBinding id="0aaa0ad0-8f2a-4238-9350-93ee5b5a6a95">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -180,7 +165,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>CIGNA_RAS</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="05922377-1f85-46ae-9851-f91c8e44def1">
+        <staticBinding id="131708de-f579-4c47-8d2d-fcd2e5ae1499">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -195,7 +180,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="99b872de-294e-4d68-a795-ff60ed54a7d1">
+        <transition id="54515879-0917-497c-b959-b7d1d48f36de">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -204,10 +189,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>e97efb5f-a331-4d11-913b-30ede3bb0c91</refId>
+            <refId>dac7ee08-6189-4f3d-9d04-23b21c5d0268</refId>
           </destination>
           <source>
-            <refId>a37a62ae-3f93-4b97-b50a-1a676fde1684</refId>
+            <refId>1e3acd53-a74e-46d0-a2d1-ac59854997b0</refId>
           </source>
           <positions>
             <point>
@@ -232,8 +217,8 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="e97efb5f-a331-4d11-913b-30ede3bb0c91">
-      <annotation>debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.description</annotation>
+    <step id="dac7ee08-6189-4f3d-9d04-23b21c5d0268">
+      <annotation>13a708cb-2e73-4672-8e24-303e184e1134.dac7ee08-6189-4f3d-9d04-23b21c5d0268.description</annotation>
       <name>UUID Generator</name>
       <bounds>
         <x>29.0</x>
@@ -241,12 +226,12 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="d43dcddc-968d-48ec-87f4-fba4002d850c">
+      <iconSpec id="cad3acb9-9e44-492e-bf72-e6897dfb724f">
         <baseIcon>index.png</baseIcon>
         <basePath>/Others/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="ba57fbd5-b582-4319-8f9c-61c385aaea73">
+          <iconSpec id="07f0863e-420f-4a9a-a8d7-849412108e1d">
             <baseIcon>wrench.png</baseIcon>
             <basePath>/Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -268,7 +253,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="74b85bc9-7945-4f76-96b1-447c6d74c353">
+        <transition id="551d955d-0666-4674-acb3-7f543c790e2d">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -277,10 +262,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>939b557e-5039-4d1c-a507-a965566b7db0</refId>
+            <refId>eda9aaf7-8cf4-4520-95b2-3ffb59aa8e7d</refId>
           </destination>
           <source>
-            <refId>e97efb5f-a331-4d11-913b-30ede3bb0c91</refId>
+            <refId>dac7ee08-6189-4f3d-9d04-23b21c5d0268</refId>
           </source>
           <positions>
             <point>
@@ -303,19 +288,19 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
         <refId>fcf29035-446d-4868-b2e5-50e3dd0cbd0a</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="f583d40a-b6e8-4468-8311-bc1dac467c9e">
+        <flowVariableAssignment id="ca7d4384-d6a3-49b1-a9b1-ef0e1e061326">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>vmGen</contextKey>
-          <expression id="87d0df9c-ef1d-4bec-adcb-b86ecd8c7756">
+          <expression id="834ee946-e676-4685-863c-790f7ca01fca">
             <annotation></annotation>
             <name>Result Field: resultString</name>
             <fieldName>resultString</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <selectRangeFilter id="abbc3aae-e88f-4452-8d4a-5fd2f28eb295">
+              <selectRangeFilter id="0f351f3f-d467-4c4a-86f2-0076f8de4494">
                 <annotation></annotation>
                 <name>Select Range</name>
                 <start>0</start>
@@ -327,8 +312,8 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="939b557e-5039-4d1c-a507-a965566b7db0">
-      <annotation>debe9443-a8f6-4552-a4de-9d43280f5a04.939b557e-5039-4d1c-a507-a965566b7db0.description</annotation>
+    <step id="eda9aaf7-8cf4-4520-95b2-3ffb59aa8e7d">
+      <annotation>13a708cb-2e73-4672-8e24-303e184e1134.eda9aaf7-8cf4-4520-95b2-3ffb59aa8e7d.description</annotation>
       <name>Deploy Virtual MAchine</name>
       <bounds>
         <x>29.0</x>
@@ -336,12 +321,12 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="cf973db1-1b8d-4050-9ad0-2ef4d3b19369">
+      <iconSpec id="362cb67b-288c-4396-ae5d-27912a752c10">
         <baseIcon>orange_server_plain.png</baseIcon>
         <basePath>/Servers/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="3599ad23-4079-489b-83b4-e6ed0a433088">
+          <iconSpec id="92752418-808d-4a9e-a246-b13e728928c3">
             <baseIcon>copy.png</baseIcon>
             <basePath>/Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -362,7 +347,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="9ea1f8b1-1870-4351-9e19-a107ee89c2d1">
+        <staticBinding id="1eb506a9-4dad-485e-987b-f3d4ec340e9f">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -375,7 +360,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>${vcenter_host}</value>
           <record>false</record>
         </staticBinding>
-        <identityBinding id="62cd5266-ae52-4fed-972e-9017f8152afc">
+        <identityBinding id="488b3ef8-939b-4e84-9bbe-b354dc2ad099">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -392,7 +377,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           </link>
           <identityAttribute>USERNAME</identityAttribute>
         </identityBinding>
-        <identityBinding id="641307cb-2f01-4013-94e1-517a00e13f12">
+        <identityBinding id="52c6b287-5f59-426c-9b89-ece0b59f9013">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -409,7 +394,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           </link>
           <identityAttribute>PASSWORD</identityAttribute>
         </identityBinding>
-        <staticBinding id="4d20f019-c487-4ffd-b72f-5e6da7afe458">
+        <staticBinding id="d48b1780-84fe-45ba-910d-03a0f0617f12">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -422,7 +407,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>443</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="01486c4b-203d-4fda-8dbf-d8181b0a5046">
+        <staticBinding id="cac3bb31-270a-4ed9-a1c8-a0db2b7629a5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -435,7 +420,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>https</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="3ffed92b-4fa8-48d6-95cd-323fc7fafaf2">
+        <staticBinding id="1569dc41-4f50-46c8-a7fb-ec2da72e6ec0">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -448,7 +433,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>false</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="88970c4f-55e1-4384-bdaa-590ef796a294">
+        <staticBinding id="4570adfb-75ad-4a27-8dfd-b3eca4ef7e65">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -461,7 +446,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>false</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="8eb352ad-3a68-4608-88b5-a801bde9db22">
+        <staticBinding id="6dc650d4-96bd-43e4-b8d0-3297a88c8ab3">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -474,7 +459,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>5000</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="06c9d022-9267-4674-9c6c-848de65238d3">
+        <staticBinding id="86527830-2a16-49c9-97b1-021b9271beb5">
           <annotation></annotation>
           <toContextKey>OperatingSystem</toContextKey>
           <fromContextKey>OperatingSystem</fromContextKey>
@@ -489,7 +474,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="cb11a7a7-b703-4e94-bf21-b9cc7aa4d8f9">
+        <staticBinding id="fd1018b0-10d1-4645-86d0-045b0e25121e">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -502,7 +487,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>${vmware_datacenter}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="77a2ee46-1463-4266-9c0f-b1cb64486aee">
+        <staticBinding id="34203bdc-ddd1-4dbd-9b63-5a6104599a09">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -515,7 +500,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>${OperatingSystem}-${vmGen}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="f760acb8-0a9a-4fbd-8454-fc0f50ade9a2">
+        <staticBinding id="44a995d1-c66f-4aee-a66f-42e68f3ef1db">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -528,7 +513,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>/</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="fa0d7f64-3d16-4ee8-88d2-f3ed6dae5780">
+        <staticBinding id="86fcc7ce-a9a2-45fb-871d-0048cf22688a">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -540,7 +525,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="3b129676-d383-4d3c-807f-b0f4494f0b06">
+        <staticBinding id="ed997205-30c7-4cc8-8010-baa53c3e9bd5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -553,7 +538,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>${datastore}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ece3eeb5-e645-47d8-ad7c-c39fcdf23e4a">
+        <staticBinding id="a8bda143-0283-4f40-a1a5-265fe1e7f546">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -566,7 +551,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>${vsphere_host}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="0c5f56e0-c637-47da-bbaa-cfa8dc99d27a">
+        <staticBinding id="870c09f5-8fb0-4f1e-b968-5d44e879b1bc">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -578,7 +563,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="586e29a1-2b03-4deb-a27e-b40401369c59">
+        <staticBinding id="9f816d79-a336-495f-86d5-e7cfe6dafc82">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -591,7 +576,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>true</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="6fbb5b33-b40f-4c25-8d18-173e94eede1a">
+        <staticBinding id="71eda356-0795-4148-a598-8d1a0372f6b1">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -604,7 +589,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="4b5a74b5-3d61-419c-849b-f70687a98571">
+        <staticBinding id="f9b4c641-180a-45a3-b270-f3542325a78c">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -617,7 +602,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="a9da2a7f-b668-418d-92e8-ea4bd8803d16">
+        <staticBinding id="d98c0cf8-8eb5-43b1-a432-4225e3727d8c">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -629,7 +614,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="e2fd5199-f3e8-4368-b110-c3dd664d2e70">
+        <staticBinding id="629fc758-f9e9-4940-825b-b3cca6bd3d3f">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -643,7 +628,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="9ff167da-8289-4011-9d5b-2310d8c296c2">
+        <transition id="93cd6580-c2e5-4ada-b709-0baee1f79f1c">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -652,10 +637,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>9479396f-1832-4c42-b48c-eaf2434bef2c</refId>
+            <refId>80984c34-4dea-47dd-971f-2472d29db3e6</refId>
           </destination>
           <source>
-            <refId>939b557e-5039-4d1c-a507-a965566b7db0</refId>
+            <refId>eda9aaf7-8cf4-4520-95b2-3ffb59aa8e7d</refId>
           </source>
           <positions>
             <point>
@@ -672,7 +657,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="93f6db4b-c608-4d46-96f0-4d2c8c8365d3">
+        <transition id="02253776-006a-4fd7-a7cd-f0d734374fe7">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -681,10 +666,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>da10708c-cd14-4c34-b1a4-c6fc0feff74d</refId>
+            <refId>b3fa5abe-7059-479c-8707-5c3f7691e45a</refId>
           </destination>
           <source>
-            <refId>939b557e-5039-4d1c-a507-a965566b7db0</refId>
+            <refId>eda9aaf7-8cf4-4520-95b2-3ffb59aa8e7d</refId>
           </source>
           <positions>
             <point>
@@ -709,7 +694,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <returnStep id="9479396f-1832-4c42-b48c-eaf2434bef2c">
+    <returnStep id="80984c34-4dea-47dd-971f-2472d29db3e6">
       <annotation></annotation>
       <name>Error : failure</name>
       <bounds>
@@ -732,7 +717,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="db475236-6d41-4acf-af61-bd17433e7fc4">
+        <transition id="9e1df580-b393-4a3f-888f-5fffe7fe6cd9">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -741,10 +726,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>9479396f-1832-4c42-b48c-eaf2434bef2c</refId>
+            <refId>80984c34-4dea-47dd-971f-2472d29db3e6</refId>
           </destination>
           <source>
-            <refId>9479396f-1832-4c42-b48c-eaf2434bef2c</refId>
+            <refId>80984c34-4dea-47dd-971f-2472d29db3e6</refId>
           </source>
           <positions/>
         </transition>
@@ -753,7 +738,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <returnStepType>ERROR</returnStepType>
       <assignments/>
     </returnStep>
-    <returnStep id="e89e0437-9145-4bbf-85e1-e795799fadb9">
+    <returnStep id="2ce0f82d-3263-4261-832e-c4f0ac3a87ea">
       <annotation></annotation>
       <name>Resolved : success</name>
       <bounds>
@@ -776,7 +761,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="cc5ff714-0b09-4c2a-ad68-b1faf66fb4af">
+        <transition id="f6e0d281-19bb-4690-85f6-8432f9f145d9">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -785,10 +770,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>e89e0437-9145-4bbf-85e1-e795799fadb9</refId>
+            <refId>2ce0f82d-3263-4261-832e-c4f0ac3a87ea</refId>
           </destination>
           <source>
-            <refId>e89e0437-9145-4bbf-85e1-e795799fadb9</refId>
+            <refId>2ce0f82d-3263-4261-832e-c4f0ac3a87ea</refId>
           </source>
           <positions/>
         </transition>
@@ -797,8 +782,8 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <returnStepType>RESOLVED</returnStepType>
       <assignments/>
     </returnStep>
-    <step id="da10708c-cd14-4c34-b1a4-c6fc0feff74d">
-      <annotation>debe9443-a8f6-4552-a4de-9d43280f5a04.da10708c-cd14-4c34-b1a4-c6fc0feff74d.description</annotation>
+    <step id="b3fa5abe-7059-479c-8707-5c3f7691e45a">
+      <annotation>13a708cb-2e73-4672-8e24-303e184e1134.b3fa5abe-7059-479c-8707-5c3f7691e45a.description</annotation>
       <name>Sleep</name>
       <bounds>
         <x>270.0</x>
@@ -806,7 +791,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="48086887-9557-4255-9796-5b0b4041f242">
+      <iconSpec id="bb8bdc59-f510-45ba-a8be-075f87e6d918">
         <baseIcon>hourglass.png</baseIcon>
         <basePath>Utilities</basePath>
         <readOnly>false</readOnly>
@@ -825,7 +810,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="5d54c885-5221-4fa8-9df0-7c1ed7928df6">
+        <staticBinding id="2a4b1411-296e-494c-93d0-80612ed54d0c">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -840,7 +825,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="b4ecaa31-8523-4427-a4b3-4c9f1f82db33">
+        <transition id="58c059e6-f244-4a19-8cfe-490e08274791">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -849,10 +834,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>9479396f-1832-4c42-b48c-eaf2434bef2c</refId>
+            <refId>80984c34-4dea-47dd-971f-2472d29db3e6</refId>
           </destination>
           <source>
-            <refId>da10708c-cd14-4c34-b1a4-c6fc0feff74d</refId>
+            <refId>b3fa5abe-7059-479c-8707-5c3f7691e45a</refId>
           </source>
           <positions>
             <point>
@@ -869,7 +854,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="87d9be5b-b84c-46be-9912-7adfa2d6a761">
+        <transition id="bc70ae12-16db-4857-a545-051d814c018f">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -878,10 +863,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>36e1304d-0e1b-4cb5-9a3f-0e24bf4dad62</refId>
+            <refId>eef563f6-8bc1-45d3-bcb3-d71cd6811045</refId>
           </destination>
           <source>
-            <refId>da10708c-cd14-4c34-b1a4-c6fc0feff74d</refId>
+            <refId>b3fa5abe-7059-479c-8707-5c3f7691e45a</refId>
           </source>
           <positions>
             <point>
@@ -906,8 +891,8 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="93fd3554-45e6-4e8a-9669-1dc70a49d9c2">
-      <annotation>debe9443-a8f6-4552-a4de-9d43280f5a04.93fd3554-45e6-4e8a-9669-1dc70a49d9c2.description</annotation>
+    <step id="7a4eff49-857a-4687-b3e1-84306dfb8039">
+      <annotation>13a708cb-2e73-4672-8e24-303e184e1134.7a4eff49-857a-4687-b3e1-84306dfb8039.description</annotation>
       <name>vCenter Modify Virtual Machine</name>
       <bounds>
         <x>660.0</x>
@@ -915,7 +900,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="f83ac081-19e8-4cef-8aa7-3453414858fc">
+      <iconSpec id="dc6b4cc9-6dc6-4975-bce8-6e5738c2349f">
         <baseIcon>change.png</baseIcon>
         <basePath>/Integrations/</basePath>
         <readOnly>false</readOnly>
@@ -935,7 +920,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <userPrompt></userPrompt>
       <stepRerun>rerun</stepRerun>
       <bindings>
-        <staticBinding id="ac569bb4-79d3-430d-a090-b70d9b8357b4">
+        <staticBinding id="1de6eef0-653c-4b41-af2e-11d0d0b28ba0">
           <annotation></annotation>
           <fromContextKey>host</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -949,7 +934,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="9549007b-1ff2-47d9-81eb-c2ed535a12fb">
+        <staticBinding id="21aa25b6-4786-4bdf-9b6b-008a49364b22">
           <annotation></annotation>
           <fromContextKey>user</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -963,7 +948,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>administrator@vsphere.local</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="3381b47c-c208-4421-b206-ad5a11101696">
+        <staticBinding id="74f5afd1-e9c2-47ea-9643-3c6ac2066866">
           <annotation></annotation>
           <fromContextKey>password</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -977,7 +962,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>{OBFUSCATED}7InOWftsbZRNZ7gACTmEtA==</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="9c29b6cb-b34d-4e65-b5eb-32b848f1fbc3">
+        <staticBinding id="06963689-4e8b-407b-a0d9-9d8270516d17">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -990,7 +975,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>https</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="c313ca6d-95a8-4633-a119-c8ac0d0b6f26">
+        <staticBinding id="dc20e341-470a-4a83-993f-53ef3e91b35c">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1003,7 +988,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>443</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="e4d3316c-6cfc-4b20-a9bd-6d88ebbcea7e">
+        <staticBinding id="24607886-47be-4337-9a18-6d7f99ea75b1">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1016,7 +1001,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>true</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="a1cdd59d-c0d9-4043-b860-d1f78e49e772">
+        <staticBinding id="13a097fa-ee38-4bdd-a3ca-8d7368f47590">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1031,7 +1016,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>name</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="bcb5e156-f014-4449-9309-d51c084224ec">
+        <staticBinding id="66a8ea4e-430d-46dc-bbc2-6dff9a38c1ae">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey>vmName</fromContextKey>
@@ -1046,7 +1031,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="1bd13da4-6b2a-4c04-b7e1-fe4a5a6e8e29">
+        <staticBinding id="2bc4fb86-ef73-4770-9a2a-286fb1bb49e6">
           <annotation></annotation>
           <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1059,7 +1044,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>BLACKBOX</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="954994d0-6369-474b-9e23-51ff03a823d1">
+        <staticBinding id="002c9c7c-beba-40fe-b68b-a3bb8489f2c5">
           <annotation></annotation>
           <fromContextKey>Memory</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -1073,7 +1058,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="271a40a8-0e9c-4f07-8345-6f1ac6dd890f">
+        <staticBinding id="796e121f-942c-441c-a4da-636d9c0f3500">
           <annotation></annotation>
           <fromContextKey>CPU</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -1087,7 +1072,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>4</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="d0923bf2-3535-4ea5-a548-f4421530fc5b">
+        <staticBinding id="67352c6d-f838-4720-8f14-f6cca691f1d3">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1100,7 +1085,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>false</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="a871802e-2fa2-4ac1-b2c5-6d6832b8c5ba">
+        <staticBinding id="1cd30147-3315-4f39-97ec-4bf945cf20e9">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1113,7 +1098,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>10</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="50a31ddc-1577-4c03-b475-921956660b48">
+        <staticBinding id="7fac2d9c-79c8-4166-b3c3-7c35fdcbe12b">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1128,7 +1113,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="f7f850d8-10f8-4e28-b2f7-4c72204b2a74">
+        <transition id="d7da3423-3758-4265-91c5-a462462fd20d">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -1137,10 +1122,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>9479396f-1832-4c42-b48c-eaf2434bef2c</refId>
+            <refId>80984c34-4dea-47dd-971f-2472d29db3e6</refId>
           </destination>
           <source>
-            <refId>93fd3554-45e6-4e8a-9669-1dc70a49d9c2</refId>
+            <refId>7a4eff49-857a-4687-b3e1-84306dfb8039</refId>
           </source>
           <positions>
             <point>
@@ -1157,7 +1142,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="585ce21c-e608-483a-a3c3-ef99ec27fb5c">
+        <transition id="758cb154-c75b-4513-9ce3-f6e7801c2ac3">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -1166,10 +1151,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>065c9b97-b6b2-4287-9672-6a7301cd1702</refId>
+            <refId>a31e467f-f8c4-4b32-865c-7fe3a6c24fe4</refId>
           </destination>
           <source>
-            <refId>93fd3554-45e6-4e8a-9669-1dc70a49d9c2</refId>
+            <refId>7a4eff49-857a-4687-b3e1-84306dfb8039</refId>
           </source>
           <positions>
             <point>
@@ -1194,8 +1179,8 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="36e1304d-0e1b-4cb5-9a3f-0e24bf4dad62">
-      <annotation>debe9443-a8f6-4552-a4de-9d43280f5a04.36e1304d-0e1b-4cb5-9a3f-0e24bf4dad62.description</annotation>
+    <step id="eef563f6-8bc1-45d3-bcb3-d71cd6811045">
+      <annotation>13a708cb-2e73-4672-8e24-303e184e1134.eef563f6-8bc1-45d3-bcb3-d71cd6811045.description</annotation>
       <name>Add New Disk</name>
       <bounds>
         <x>450.0</x>
@@ -1203,12 +1188,12 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="15b0f723-3ae2-46a4-bb48-7ada3c5a89dd">
+      <iconSpec id="89e3a2ce-0828-49fc-9c2c-133849e83892">
         <baseIcon>harddisk.png</baseIcon>
         <basePath>/Operating System/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="54d0238c-d5c0-478a-8fbc-f46a754375db">
+          <iconSpec id="be4103d9-a1ba-4e2c-83af-0f1307eea84f">
             <baseIcon>add.png</baseIcon>
             <basePath>/Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -1229,7 +1214,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="ddf4b3f5-eedf-453c-b753-f66930beb45e">
+        <staticBinding id="3623b4a0-83f1-41d1-b84a-8c9c57f2a188">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1244,7 +1229,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="69036ea8-cf67-4bc5-a06d-fbe52ae49689">
+        <staticBinding id="a7a430ad-47e3-4091-9f2b-b4aedf310029">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1259,7 +1244,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>administrator@vsphere.local</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="e427c0ec-27f0-49d9-8b69-4ad88b205248">
+        <staticBinding id="33913a47-7370-4a69-93e7-b3748c780d25">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1274,7 +1259,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>{OBFUSCATED}7InOWftsbZRNZ7gACTmEtA==</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ec778983-6251-4a8d-a6ec-a2144706e191">
+        <staticBinding id="eca20316-c59d-49b5-adb7-c3464ee30d37">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1289,7 +1274,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>443</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="f0c45893-e2c2-427d-8669-a44fca8ea5c4">
+        <staticBinding id="cc5ccb0a-1b96-40ec-810e-0482f51af9d7">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1304,7 +1289,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>https</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="239211c8-c8bd-4fe8-a474-11ad1d5bfb6c">
+        <staticBinding id="ce584364-3665-479d-b865-01dbb840fb36">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1319,7 +1304,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>true</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="b29b278c-06b0-49e7-ad5f-f02e2023ae1a">
+        <staticBinding id="a2dd0bdd-b2c6-48b2-bf06-ccd58db5b63d">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1334,7 +1319,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>false</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="a31f5433-4d34-4881-8356-46a4672d079a">
+        <staticBinding id="65abb798-ff8d-489e-b143-106de1ad3852">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1349,7 +1334,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>800</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="0862e516-d8fb-47fb-b2de-8e9cf15f4c83">
+        <staticBinding id="e477f49d-52ea-4672-af84-56086d3ac9ac">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1364,7 +1349,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>name</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="3519d62f-0773-4635-9d3c-e888a78d0ece">
+        <staticBinding id="c9ec0084-a1dc-4411-b14e-ddbb94dbfc12">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey>vmName</fromContextKey>
@@ -1379,7 +1364,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="2d2fa3c2-7182-440d-9988-a85b849b2dcf">
+        <staticBinding id="287be398-56c2-4e80-87ee-84a48d328848">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1394,7 +1379,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>BLACKBOX</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ed0af4a5-1dd9-41b4-bf6e-7d8c02eb9023">
+        <staticBinding id="3221a3a5-6179-4a84-9a7c-4026e4c7c3be">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1409,7 +1394,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>datastore1</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="d3e22e2f-3cad-43f1-9b56-dc3916e858fb">
+        <staticBinding id="4dd1187a-f22e-48be-a5ff-90caf5466a44">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1424,7 +1409,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>datastore1/${vmName}/apps.vmdk</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="fe76ab08-f7ee-4a98-8318-4ac20183a56c">
+        <staticBinding id="f1eefbcb-722b-496b-989c-418f14863521">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey>Storage</fromContextKey>
@@ -1439,7 +1424,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="d6ce65f0-271f-45e6-afc6-fc8ff3d47830">
+        <staticBinding id="a06c42bb-7640-4874-97e0-346547e810e6">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1452,7 +1437,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>GB</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="d74c30f8-b563-46b1-bf1a-84341e780620">
+        <staticBinding id="a6b33359-3954-4277-b48b-226669f0e9c7">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1467,7 +1452,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>independent_nonpersistent</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="afd243eb-639f-4d93-88d2-ad9bf2636435">
+        <staticBinding id="9a256f4c-2ff1-4861-9c45-5879ea39d8af">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1482,7 +1467,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>true</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="65eeb92f-f416-40bf-a0d1-5019a8193296">
+        <staticBinding id="24ab0b0f-86fa-45eb-b676-45f47521c776">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1495,7 +1480,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>false</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="91e72e62-a8d7-44a2-94f0-07960166a29a">
+        <staticBinding id="d3824e30-bdaa-47da-84e8-13ecf8b8156e">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1507,7 +1492,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="7f3850b7-676b-4659-a3a9-d2d3ebb47e6d">
+        <staticBinding id="59544dd9-d271-4bd5-a746-3ffe9bf26bc6">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1521,7 +1506,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="737d5e0b-c540-43b2-8a68-9bab596a89fc">
+        <transition id="23ebd6ff-f534-4fd9-b5ab-c7e8ad4937f5">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -1530,10 +1515,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>9479396f-1832-4c42-b48c-eaf2434bef2c</refId>
+            <refId>80984c34-4dea-47dd-971f-2472d29db3e6</refId>
           </destination>
           <source>
-            <refId>36e1304d-0e1b-4cb5-9a3f-0e24bf4dad62</refId>
+            <refId>eef563f6-8bc1-45d3-bcb3-d71cd6811045</refId>
           </source>
           <positions>
             <point>
@@ -1550,7 +1535,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="a9f4d83f-3f47-4c8e-bde9-d52d70c7b24a">
+        <transition id="26ba8fff-9cd2-4b45-93ea-76c6b7126524">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -1559,10 +1544,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>93fd3554-45e6-4e8a-9669-1dc70a49d9c2</refId>
+            <refId>7a4eff49-857a-4687-b3e1-84306dfb8039</refId>
           </destination>
           <source>
-            <refId>36e1304d-0e1b-4cb5-9a3f-0e24bf4dad62</refId>
+            <refId>eef563f6-8bc1-45d3-bcb3-d71cd6811045</refId>
           </source>
           <positions>
             <point>
@@ -1587,8 +1572,8 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="065c9b97-b6b2-4287-9672-6a7301cd1702">
-      <annotation>debe9443-a8f6-4552-a4de-9d43280f5a04.065c9b97-b6b2-4287-9672-6a7301cd1702.description</annotation>
+    <step id="a31e467f-f8c4-4b32-865c-7fe3a6c24fe4">
+      <annotation>13a708cb-2e73-4672-8e24-303e184e1134.a31e467f-f8c4-4b32-865c-7fe3a6c24fe4.description</annotation>
       <name>Set Power State</name>
       <bounds>
         <x>450.0</x>
@@ -1596,12 +1581,12 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="9af62b2c-12cc-4150-be7d-fa7d6ae6cb20">
+      <iconSpec id="661923eb-12bd-4653-be6d-c34e9f32be28">
         <baseIcon>orange_server_plain.png</baseIcon>
         <basePath>/Servers/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="22365f68-cbe1-49be-bb86-2685ceb9f4f2">
+          <iconSpec id="4ef918b6-382d-4533-b474-793e13905749">
             <baseIcon>flash.png</baseIcon>
             <basePath>/Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -1622,7 +1607,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <userInputBinding id="609218f6-0f7a-454d-890c-cf879ac21bfb">
+        <userInputBinding id="f23d0d31-b01f-4eda-849e-6c9503545777">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1635,11 +1620,11 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <inputSymbol>host</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
-          <prompt>debe9443-a8f6-4552-a4de-9d43280f5a04.609218f6-0f7a-454d-890c-cf879ac21bfb.prompt</prompt>
+          <prompt>13a708cb-2e73-4672-8e24-303e184e1134.f23d0d31-b01f-4eda-849e-6c9503545777.prompt</prompt>
           <isMultiSelect>false</isMultiSelect>
           <sourceDelimiter>|</sourceDelimiter>
         </userInputBinding>
-        <staticBinding id="fa496de5-ec89-463c-b5c2-e77ba2c1424d">
+        <staticBinding id="b589f1c5-a91d-4148-adc3-9fbf819a1293">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1653,7 +1638,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <userInputBinding id="335fc567-5ecb-4b59-83ed-99e7ba3764fc">
+        <userInputBinding id="99ffdbb0-bef2-402e-9ab6-4b11b14f87ad">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1667,11 +1652,11 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <inputSymbol>password</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
-          <prompt>debe9443-a8f6-4552-a4de-9d43280f5a04.335fc567-5ecb-4b59-83ed-99e7ba3764fc.prompt</prompt>
+          <prompt>13a708cb-2e73-4672-8e24-303e184e1134.99ffdbb0-bef2-402e-9ab6-4b11b14f87ad.prompt</prompt>
           <isMultiSelect>false</isMultiSelect>
           <sourceDelimiter>|</sourceDelimiter>
         </userInputBinding>
-        <staticBinding id="99ac95c3-cd69-417d-8fd2-dd7dd467fccc">
+        <staticBinding id="9518c2ca-eedc-491c-8ecf-9055705a2eb2">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1686,7 +1671,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>443</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="71f3de6e-abe6-4973-8324-02cf3ef6e5cf">
+        <staticBinding id="9c9e395e-55b6-47c5-8cca-eb5149804ca8">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1701,7 +1686,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>https</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="1f4082cd-7a2c-4bdb-bbb8-ed43617a225b">
+        <staticBinding id="701ab00e-07f7-4924-b2a9-8a32d3e24bd5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1714,7 +1699,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>true</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ca097d44-1bd3-4046-bd22-d4e3d3349f6e">
+        <staticBinding id="97ea2bde-a11d-4404-a73f-ea486311ba86">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1729,7 +1714,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>false</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="9921150e-f49a-4e11-af5b-30312b7319a2">
+        <staticBinding id="455e61d2-3279-4c71-999a-eeb2d1f939e6">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1744,7 +1729,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>800</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="b1a85ded-ed9c-4972-b7b9-0a75eeb66203">
+        <staticBinding id="aff971ba-dc07-45e1-be9a-6bf7fbffc0c8">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1759,7 +1744,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value>name</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="da3133d1-55c8-4f79-bb87-80954a48fdd8">
+        <staticBinding id="7e931e5a-1d40-4f64-b3a3-964cce2ff032">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey>vmName</fromContextKey>
@@ -1774,7 +1759,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="9f14a578-b2e1-47db-bbdd-d553e0328ccf">
+        <staticBinding id="b2c299ef-8d51-4b28-a322-894d6a792b5c">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1791,7 +1776,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="84096f49-e558-4659-92ef-de4726084b10">
+        <transition id="5ecff5dc-308b-476f-b52d-f19f624e5718">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -1800,10 +1785,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>9479396f-1832-4c42-b48c-eaf2434bef2c</refId>
+            <refId>80984c34-4dea-47dd-971f-2472d29db3e6</refId>
           </destination>
           <source>
-            <refId>065c9b97-b6b2-4287-9672-6a7301cd1702</refId>
+            <refId>a31e467f-f8c4-4b32-865c-7fe3a6c24fe4</refId>
           </source>
           <positions>
             <point>
@@ -1820,19 +1805,19 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="b9466b70-591d-45b4-a62f-fad899c129aa">
+        <transition id="05217f68-d175-4b7a-8f9c-4fa0faf127ec">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
           <linkMode>false</linkMode>
           <responseSymbol>success</responseSymbol>
           <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
+          <transitionValue>300.0</transitionValue>
           <destination>
-            <refId>e89e0437-9145-4bbf-85e1-e795799fadb9</refId>
+            <refId>2ce0f82d-3263-4261-832e-c4f0ac3a87ea</refId>
           </destination>
           <source>
-            <refId>065c9b97-b6b2-4287-9672-6a7301cd1702</refId>
+            <refId>a31e467f-f8c4-4b32-865c-7fe3a6c24fe4</refId>
           </source>
           <positions>
             <point>
@@ -1849,7 +1834,7 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
             <y>-1.285921571368135</y>
           </labelPosition>
         </transition>
-        <transition id="9fcad49f-8655-4e73-bcf7-29c45882d5b3">
+        <transition id="e0ef0343-ccc5-4295-a88f-0576dae9b57e">
           <annotation></annotation>
           <name>no action</name>
           <command>NEXT</command>
@@ -1858,10 +1843,10 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>e89e0437-9145-4bbf-85e1-e795799fadb9</refId>
+            <refId>2ce0f82d-3263-4261-832e-c4f0ac3a87ea</refId>
           </destination>
           <source>
-            <refId>065c9b97-b6b2-4287-9672-6a7301cd1702</refId>
+            <refId>a31e467f-f8c4-4b32-865c-7fe3a6c24fe4</refId>
           </source>
           <positions>
             <point>
@@ -1895,5 +1880,5 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       <throttleSize>0</throttleSize>
     </step>
   </steps>
-  <startSteps>a37a62ae-3f93-4b97-b50a-1a676fde1684</startSteps>
+  <startSteps>1e3acd53-a74e-46d0-a2d1-ac59854997b0</startSteps>
 </flow>

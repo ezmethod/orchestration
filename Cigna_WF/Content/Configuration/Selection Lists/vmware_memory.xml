@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selectionList id="ee7cf61d-c3b3-440d-98f3-a0d3002dac34">
+  <descriptionCdata><![CDATA[ee7cf61d-c3b3-440d-98f3-a0d3002dac34.description=vmware memory selection list - In MB
+]]></descriptionCdata>
+  <annotation>ee7cf61d-c3b3-440d-98f3-a0d3002dac34.description</annotation>
+  <name>vmware_memory</name>
+  <storage>
+    <string>1024</string>
+    <string>2048</string>
+    <string>4096</string>
+    <string>8192</string>
+    <string>16384</string>
+  </storage>
+</selectionList>

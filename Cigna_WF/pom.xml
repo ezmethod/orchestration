@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>DEFAULT</groupId>
   <artifactId>Cigna_WF</artifactId>
-  <version>1.0.1</version>
+  <version>1.08-SNAPSHOT</version>
   <dependencies>
     <dependency>
       <groupId>DEFAULT</groupId>
@@ -15,11 +15,6 @@
       <groupId>DEFAULT</groupId>
       <artifactId>Base</artifactId>
       <version>[1.11.0]</version>
-    </dependency>
-    <dependency>
-      <groupId>DEFAULT</groupId>
-      <artifactId>Cigna</artifactId>
-      <version>1.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

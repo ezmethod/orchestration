@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selectionList id="c5cb9178-19dc-4f57-8644-35b52135e0b3">
+  <descriptionCdata><![CDATA[c5cb9178-19dc-4f57-8644-35b52135e0b3.description=VMware CPU Count
+]]></descriptionCdata>
+  <annotation>c5cb9178-19dc-4f57-8644-35b52135e0b3.description</annotation>
+  <name>vmware_cpu</name>
+  <storage>
+    <string>1</string>
+    <string>2</string>
+    <string>4</string>
+    <string>6</string>
+    <string>8</string>
+    <string>16</string>
+    <string>24</string>
+    <string>32</string>
+  </storage>
+</selectionList>

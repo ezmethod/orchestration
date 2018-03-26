@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selectionList id="b1e52503-1b75-4659-9b79-419b059403e8">
+  <descriptionCdata><![CDATA[b1e52503-1b75-4659-9b79-419b059403e8.description=vmware operating system selection
+]]></descriptionCdata>
+  <annotation>b1e52503-1b75-4659-9b79-419b059403e8.description</annotation>
+  <name>vmware_os</name>
+  <storage>
+    <string>LINUX</string>
+    <string>WINDOWS</string>
+  </storage>
+</selectionList>
