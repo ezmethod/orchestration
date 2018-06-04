@@ -16,5 +16,10 @@
       <artifactId>ServiceNow</artifactId>
       <version>[1.2.0]</version>
     </dependency>
+    <dependency>
+      <groupId>DEFAULT</groupId>
+      <artifactId>Operating Systems</artifactId>
+      <version>[1.4.0]</version>
+    </dependency>
   </dependencies>
 </project>
