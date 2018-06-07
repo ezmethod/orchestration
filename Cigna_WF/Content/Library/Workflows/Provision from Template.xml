@@ -141,6 +141,19 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="1f5faa64-4b77-416c-bd95-edf6fbcb0637">
+        <baseIcon>jar.png</baseIcon>
+        <basePath>Others/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="9b606aac-d958-4bd8-b2dc-86a4357305b9">
+            <baseIcon>edit.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -241,18 +254,11 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="d43dcddc-968d-48ec-87f4-fba4002d850c">
-        <baseIcon>index.png</baseIcon>
+      <iconSpec id="933fe8aa-81eb-434b-bba2-0383996a49b2">
+        <baseIcon>astrologer.png</baseIcon>
         <basePath>/Others/</basePath>
         <readOnly>false</readOnly>
-        <layers>
-          <iconSpec id="ba57fbd5-b582-4319-8f9c-61c385aaea73">
-            <baseIcon>wrench.png</baseIcon>
-            <basePath>/Annotations/</basePath>
-            <readOnly>false</readOnly>
-            <layers/>
-          </iconSpec>
-        </layers>
+        <layers/>
       </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
@@ -762,6 +768,12 @@ debe9443-a8f6-4552-a4de-9d43280f5a04.e97efb5f-a331-4d11-913b-30ede3bb0c91.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="1e2037c5-73d7-4335-8686-9e161cb78de2">
+        <baseIcon>return_success.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>true</readOnly>
+        <layers/>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>

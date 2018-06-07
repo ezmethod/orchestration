@@ -4,7 +4,9 @@
 9b57d629-bc6e-4d0c-9059-9e061f01eca1.25c65fe2-e4dc-4e7d-b615-16d9618c82f9.prompt=Select number of CPU's for New Server
 9b57d629-bc6e-4d0c-9059-9e061f01eca1.48b2256a-b847-4aac-87a4-1e7454774726.description=<pre>\nAdds a list of flow variables to the local context. The variables are available in the current flow and its child flows.\n\nInputs\:\n    keyNames - The names of the flow variables to add, separated by "delimiter".\n    myValues - The values to assign to the flow variables, separated by "delimiter".\n    delimiter - The delimiter that separates the key names and the values from the "keyNames" and "myValues" input strings.\n\nResults\:\n    returnResult - This is the primary output. It contains the value of "myValue" input field.\n\nResponses\:\n    success - The operation completed as stated in the description.\n\nNotes\:\n1. If the number of variable names is greater than the number of variable values, the value of each variable will be the value of "myValues" input field.\n2. If the number of variable names is less than the number of variable values, the additional variable values will be discarded.\n</pre>
 9b57d629-bc6e-4d0c-9059-9e061f01eca1.534ab970-5655-40fa-b8cb-25becce6c6bf.prompt=Select Operating System
+9b57d629-bc6e-4d0c-9059-9e061f01eca1.5ff363b4-090e-4a53-8026-456c5ed3cbcf.prompt=Enter Vcenter User ID\:
 9b57d629-bc6e-4d0c-9059-9e061f01eca1.6843635d-875b-413e-baa6-750815a29556.description=<pre>Deploys a virtual machine from a template. The source is the templateName while the deploy is defined by <vmName,vmFolder,vmResourcePool,dataStore,hostSystem,clusterName>.\n\nNote\: cannot work across virtual datacenters\n\nInputs\:\n    host - VMware vCenter, ESX or ESXi host hostname or IP.\n    user - VMware username.\n    password - VMware user's password.\n    port - Port to connect on.\nExamples\: 443, 80\n    protocol - Connection protocol.\nValid values\: "https", "http"\n    closeSession - Close the internally kept VMware Infrastructure API session at completion of operation.\nValid values\: "true", "false"\n    async - Asynchronously perform the task.\nValid values\: "true", "false"\n    taskTimeOut - Time to wait before the operation is considered to have failed (seconds).\nDefault value\: 800\n    templateName - Name of the template to deploy from. \n    vmDatacenter - Virtual machine's datacenter. If host is ESX(i) use "ha-datacenter".\n    vmName - Name of new virtual machine being created.\n    vmFolder - Virtual machine's inventory folder. Folder names are delimited by a forward slash "/".  This input is case sensitive.  Only supported when host is a vCenter.  For root folder, use "/".\nExample\: /Hewlett Packard Enterprise/Operations Orchestration/VMs\n    vmResourcePool - Resource pool for new virtual machine. Resource pool names are delimited by a forward slash "/".  For the root resource pool, specify "Resources" or a single "/".\n    dataStore - Name of datastore or datastore cluster to store new virtual machine (eg. host\:dsname, mydatastore).  If not specified the same datastore of the source virtual machine will be used.\n    hostSystem - Name of destination host system (ESX or ESXi) for new virtual machine as seen in the vCenter UI.  Only supported when host is a vCenter.  If not specified the same host system of the source virtual machine will be used.\n    clusterName - Name of the VMWare HA or DRS cluster.  Can be specified instead of hostSystem if the desired destination ESX(i) host is in a DRS or HA cluster.\n    thinProvision - Specifies whether to perform thin provisioning of the virtual disk. If empty, the disk format will be set as same format as source. If true, the disk format will be set as thin provisioned format. If false, the disk format will be set as thick format.\nValid values\: "true", "false"\n    customizationTemplateName - Name of the customization specification to apply while creating this clone. The customization specification should already exist in the vCenter customization specifications manager. If  both 'customizationTemplateName' and 'customizationSpecXml' have values, the flow will fail.\n    customizationSpecXml - The Xml string of the customization spec.\n    connectionTimeout -  The time to wait for a connection to be established, in seconds. A "connectionTimeout" value of '0' represents an infinite timeout.\nDefault value\: 0\nFormat\: an integer representing seconds\nExamples\: 10, 20\n    socketTimeout -  The time to wait for data (a maximum period of inactivity between two consecutive data packets), in seconds. A "socketTimeout" value of '0' represents an infinite timeout.\nDefault value\: 0\nFormat\: an integer representing seconds\nExamples\: 10, 20\n\nResponses\:\n    success - The flow completed successfully.\n    failure - Something went wrong.\n\nNotes\:\n1) The result of the VMware/VMware Virtual Infrastructure and vSphere/Guest/Export Guest Customization Spec operation can be used to get the customizationSpecXml input value.\n2) Note that "socketTimeout" and "connectionTimeout" inputs do not represent the time to wait for the operation to complete. They are used when communicating with the service, to make sure that the service is up and responds to client's requests. They can be used for service diagnosis purpose.\n3) The "taskTimeOut" input is only used when the task is performed in a synchronous manner ("async" is set to "false").\n</pre>
+9b57d629-bc6e-4d0c-9059-9e061f01eca1.7e588a2e-6c91-492d-a8c6-d5a62f0321e7.prompt=Enter Vcenter Password\:
 9b57d629-bc6e-4d0c-9059-9e061f01eca1.9a79a0b1-815d-4cd1-abff-42371ebbf65d.prompt=Select how much Storage to be added to new Virtual Machine - This is in GB
 9b57d629-bc6e-4d0c-9059-9e061f01eca1.d11f223a-3f48-4028-938e-ad63d967a7a1.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
 9b57d629-bc6e-4d0c-9059-9e061f01eca1.d8f373d5-3d7e-4399-b354-f87353a4fecb.description=<pre>Sets the power state of virtual machine (poweredOn,poweredOff,suspended). Does nothing if the virtual machine is already in the desired power state.\n\nInputs\:\n    host - VMWare host hostname or IP.\n    user - VMWare username.\n    password - VMWare user's password.\n    port - Port to connect on.\n    protocol - Connection protocol.\nValid values\: "https", "http"    \n    closeSession - Close the internally kept VMware Infrastructure API session at completion of operation.\nValid values\: "true", "false"\n    async - Asynchronously perform the task.\nValid values\: "true", "false"\n    taskTimeOut - Time to wait before the operation is considered to have failed (seconds).\n    virtualMachine - Primary Virtual Machine identifier. Inventorypath (Datacenter/vm/Folder/MyVM), Name of VM, IP (IPv4 or IPv6 depending upon ESX version), hostname (full), UUID, or the VM id (vm-123,123).\n    vmIdentifierType - Virtual machine identifier type.\nValid values\: "inventorypath", "name", "ip", "hostname", "uuid", "vmid"    \n    vmPowerState - Virtual machine power state to set (poweredOn, poweredOff, suspended).\n\nResponses\:\n    success - The operation completed successfully.\n    failure - Something went wrong.\n    no action - The operation completed with no action performed.\n\nReturns\:\n    returnResult - Task ID or task completion return message.\n\nNotes\:\nInventory Path Formatting\: If host is an ESX server inventory path will be\: ha-datacenter/vm/<name of vm> .  If host is a vCenter the inventory path will be\: <name of datacenter>/vm/<folders>/<name of vm> . The <folders>/<name of vm> part of the path is based on the "Virtual Machines & Templates" view in the vCenter client. The inventory path is case sensitive.\n</pre>\n\n\n
@@ -249,7 +251,7 @@
       <name>UUID Generator</name>
       <bounds>
         <x>29.0</x>
-        <y>209.0</y>
+        <y>179.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -387,7 +389,7 @@
           <value>${vcenter_host}</value>
           <record>false</record>
         </staticBinding>
-        <identityBinding id="b48a9859-9adc-4b63-b397-be9dfcb63d2a">
+        <userInputBinding id="5ff363b4-090e-4a53-8026-456c5ed3cbcf">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -398,13 +400,11 @@
           <inputSymbol>user</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
-          <link>
-            <refId>ded25650-6808-4f91-b317-2e8c48549db5</refId>
-            <refName>vcenter_ad_acct</refName>
-          </link>
-          <identityAttribute>USERNAME</identityAttribute>
-        </identityBinding>
-        <identityBinding id="fe327e22-7ff9-4aa8-a467-97b8f92a5048">
+          <prompt>9b57d629-bc6e-4d0c-9059-9e061f01eca1.5ff363b4-090e-4a53-8026-456c5ed3cbcf.prompt</prompt>
+          <isMultiSelect>false</isMultiSelect>
+          <sourceDelimiter>|</sourceDelimiter>
+        </userInputBinding>
+        <userInputBinding id="7e588a2e-6c91-492d-a8c6-d5a62f0321e7">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>true</assignToContext>
@@ -415,12 +415,10 @@
           <inputSymbol>password</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
-          <link>
-            <refId>ded25650-6808-4f91-b317-2e8c48549db5</refId>
-            <refName>vcenter_ad_acct</refName>
-          </link>
-          <identityAttribute>PASSWORD</identityAttribute>
-        </identityBinding>
+          <prompt>9b57d629-bc6e-4d0c-9059-9e061f01eca1.7e588a2e-6c91-492d-a8c6-d5a62f0321e7.prompt</prompt>
+          <isMultiSelect>false</isMultiSelect>
+          <sourceDelimiter>|</sourceDelimiter>
+        </userInputBinding>
         <staticBinding id="633553e8-c148-4fb0-bb37-20dcac37bcb4">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
@@ -774,12 +772,6 @@
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="06af6c75-905e-4d33-885c-f3ad3d72b75d">
-        <baseIcon>return_success.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>true</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
