@@ -838,7 +838,7 @@
       <name>Get Change</name>
       <bounds>
         <x>288.0</x>
-        <y>155.0</y>
+        <y>161.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -987,7 +987,7 @@
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="c76d8d95-91af-4b17-9ac0-7f8cb905ad2c">
+        <transition id="6a6377dc-3d68-43d4-a955-635930ca3bfb">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -1004,7 +1004,7 @@
           <positions>
             <point>
               <x>338.0</x>
-              <y>189.0</y>
+              <y>195.0</y>
             </point>
             <point>
               <x>544.0</x>

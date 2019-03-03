@@ -182,7 +182,7 @@ b75d9b8e-d82b-4a04-9850-264f66b14188.f6dccc4a-cd48-466e-9865-781e5b841bc5.prompt
       <name>Set Email To Addresses</name>
       <bounds>
         <x>238.0</x>
-        <y>183.0</y>
+        <y>185.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -335,8 +335,8 @@ b75d9b8e-d82b-4a04-9850-264f66b14188.f6dccc4a-cd48-466e-9865-781e5b841bc5.prompt
       <annotation></annotation>
       <name>Error : failure</name>
       <bounds>
-        <x>362.0</x>
-        <y>416.0</y>
+        <x>392.0</x>
+        <y>86.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -379,8 +379,8 @@ b75d9b8e-d82b-4a04-9850-264f66b14188.f6dccc4a-cd48-466e-9865-781e5b841bc5.prompt
       <annotation></annotation>
       <name>createChange</name>
       <bounds>
-        <x>341.0</x>
-        <y>187.0</y>
+        <x>368.0</x>
+        <y>185.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -502,7 +502,7 @@ b75d9b8e-d82b-4a04-9850-264f66b14188.f6dccc4a-cd48-466e-9865-781e5b841bc5.prompt
       <name>Update Patching Dashboard</name>
       <bounds>
         <x>779.0</x>
-        <y>171.0</y>
+        <y>185.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -776,8 +776,8 @@ b75d9b8e-d82b-4a04-9850-264f66b14188.f6dccc4a-cd48-466e-9865-781e5b841bc5.prompt
       <annotation>b75d9b8e-d82b-4a04-9850-264f66b14188.a754607e-e6e4-4f28-b4ce-245ed2af61a5.description</annotation>
       <name>ShowDescription</name>
       <bounds>
-        <x>575.0</x>
-        <y>187.0</y>
+        <x>628.0</x>
+        <y>185.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -914,8 +914,8 @@ b75d9b8e-d82b-4a04-9850-264f66b14188.f6dccc4a-cd48-466e-9865-781e5b841bc5.prompt
       <annotation>b75d9b8e-d82b-4a04-9850-264f66b14188.be218d0e-578c-4e1c-b2ed-510522a81430.description</annotation>
       <name>Update Patching Dashboard</name>
       <bounds>
-        <x>938.0</x>
-        <y>402.0</y>
+        <x>775.0</x>
+        <y>418.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -1190,7 +1190,7 @@ b75d9b8e-d82b-4a04-9850-264f66b14188.f6dccc4a-cd48-466e-9865-781e5b841bc5.prompt
       <name>Ad Hoc Patch  Notification</name>
       <bounds>
         <x>930.0</x>
-        <y>181.0</y>
+        <y>185.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -1552,8 +1552,8 @@ ${dailyForecastResultHTML}
       <annotation>b75d9b8e-d82b-4a04-9850-264f66b14188.1c52a3d2-9e0d-411e-a792-7c1d77668415.description</annotation>
       <name>Append Server Info</name>
       <bounds>
-        <x>812.0</x>
-        <y>413.0</y>
+        <x>645.0</x>
+        <y>418.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -1771,7 +1771,7 @@ ${dailyForecastResultHTML}
       <annotation>b75d9b8e-d82b-4a04-9850-264f66b14188.9236e617-3a9f-47dc-b161-090720b9248f.description</annotation>
       <name>Schedule Patching</name>
       <bounds>
-        <x>695.0</x>
+        <x>515.0</x>
         <y>418.0</y>
       </bounds>
       <layer>-1</layer>
@@ -2109,7 +2109,7 @@ ${dailyForecastResultHTML}
               <y>452.0</y>
             </point>
             <point>
-              <x>804.5674018236143</x>
+              <x>624.5674018236143</x>
               <y>474.47720267257614</y>
             </point>
             <point>
@@ -2134,8 +2134,8 @@ ${dailyForecastResultHTML}
       <annotation>b75d9b8e-d82b-4a04-9850-264f66b14188.afa18b9c-c7ff-48b7-9a65-268ecda4f6cf.description</annotation>
       <name>List Iterator</name>
       <bounds>
-        <x>437.0</x>
-        <y>183.0</y>
+        <x>498.0</x>
+        <y>185.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
